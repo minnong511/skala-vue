@@ -26,5 +26,14 @@ export default defineConfig([
 
   ...pluginOxlint.buildFromOxlintConfigFile('.oxlintrc.json'),
 
+  // 커스텀 규칙 설정 객체
+  {
+    name: 'app/custom-rules',
+    rules: {
+      'no-unused-vars': 'warn',
+      'no-console': 'off',
+      'vue/multi-word-component-names': 'off',
+    },
+  },
   skipFormatting,
 ])
