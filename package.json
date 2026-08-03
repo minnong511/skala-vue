@@ -10,9 +10,11 @@
     "lint": "run-s \"lint:*\"",
     "lint:oxlint": "oxlint . --fix",
     "lint:eslint": "eslint . --fix --cache",
-    "format": "oxfmt src/"
+    "format": "prettier --write --experimental-cli src/"
   },
   "dependencies": {
+    "axios": "^1.18.1",
+    "element-plus": "^2.14.2",
     "pinia": "^4.0.2",
     "vue": "^3.5.40",
     "vue-router": "^5.2.0"
