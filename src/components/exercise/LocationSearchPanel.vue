@@ -5,6 +5,8 @@ import { searchLocations } from '@/services/locationApi'
 import { getGoogleMapsEmbedUrl } from '@/services/weatherApi'
 import { createDebugLogger } from '@/utils/debugLogger'
 
+import PanelInfo from './PanelInfo.vue'
+
 const props = defineProps({
   locations: {
     type: Array,
@@ -273,7 +275,20 @@ onBeforeUnmount(() => {
         allowfullscreen
         referrerpolicy="strict-origin-when-cross-origin"
       ></iframe>
-    </section>
+  </section>
+
+    <PanelInfo
+      :directives="[
+        { name: 'v-model', description: '주소 검색 input과 query 상태를 양방향으로 연결합니다.' },
+        { name: 'v-if', description: '검색 오류, 검색 결과, 선택 지도처럼 조건에 따라 화면을 렌더링합니다.' },
+        { name: 'v-for + :key', description: '검색 결과와 지역 탭을 반복하고 각 항목을 식별합니다.' },
+        { name: 'v-bind (:) + v-on (@)', description: '지도 URL·선택 상태를 바인딩하고 클릭·submit 이벤트를 처리합니다.' },
+      ]"
+      :components="[
+        { name: 'LocationSearchPanel', description: '주소 검색과 지도 표시를 담당하는 현재 패널입니다.' },
+        { name: 'BaseDashboardCard', description: '패널을 감싸는 공통 대시보드 카드입니다.' },
+      ]"
+    />
   </section>
 </template>
 

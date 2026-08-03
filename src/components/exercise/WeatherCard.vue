@@ -4,6 +4,8 @@ import { computed } from 'vue'
 import { useConfigStore } from '@/stores/configStore'
 import { createDebugLogger } from '@/utils/debugLogger'
 
+
+//
 const props = defineProps({
   cityItem: {
     type: Object,

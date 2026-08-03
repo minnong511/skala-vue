@@ -14,6 +14,7 @@ import { createDebugLogger } from '@/utils/debugLogger'
 import BaseDashboardCard from './BaseDashboardCard.vue'
 import LocationSearchPanel from './LocationSearchPanel.vue'
 import SearchBar from './SearchBar.vue'
+import PanelInfo from './PanelInfo.vue'
 import WeatherCard from './WeatherCard.vue'
 import WeatherComparisonChart from './WeatherComparisonChart.vue'
 import WeatherForecastPanel from './WeatherForecastPanel.vue'
@@ -24,6 +25,31 @@ const logger = createDebugLogger('WeatherParent')
 
 const customLocationStorageKey = 'skala-weather-custom-locations'
 const favoriteStorageKey = 'skala-weather-favorite-city-ids'
+
+const homeFlowDiagram = `App.vue
+└── <RouterView>
+    └── WeatherHomeView.vue
+        └── WeatherParent.vue
+            ├── ref: weatherList / searchQuery / selectedCityInfo
+            ├── computed: filteredWeatherList
+            ├── watch / watchEffect: 상태 변화 추적
+            │
+            └── <BaseDashboardCard>
+                └── <slot>
+                    ├── LocationSearchPanel
+                    │   ├── v-model: 주소 검색어
+                    │   ├── v-if / v-for: 검색 결과와 지도
+                    │   └── @add-location: 지역 추가
+                    ├── SearchBar
+                    │   ├── :current-query: 검색어 props
+                    │   └── @update-query: 검색어 emits
+                    ├── WeatherCard v-for
+                    │   ├── :city-item: 도시 날씨 props
+                    │   └── @select-card / @click-detail
+                    ├── WeatherComparisonChart
+                    │   └── v-model: 기온 / 습도 / 풍속
+                    └── WeatherForecastPanel
+                        └── v-if / v-for: 5일 예보 표시`
 
 const weatherList = ref([])
 const customLocations = ref([])
@@ -482,7 +508,19 @@ onMounted(() => {
   logger.state('대시보드 마운트 완료')
   loadWeatherList()
 })
+
 </script>
+
+<!-- 여기부터가 템플릿임, 진짜 길다 ㅋㅋ
+
+
+
+
+
+
+-->
+
+
 
 <template>
   <div class="dashboard-wrapper">
@@ -595,6 +633,21 @@ onMounted(() => {
           >
             '{{ searchQuery }}'와 일치하는 도시가 없습니다.
           </p>
+
+          <PanelInfo
+            :diagram="homeFlowDiagram"
+            :directives="[
+              { name: 'v-model', description: '정렬 select와 sortMode 상태를 연결합니다.' },
+              { name: 'v-if / v-else-if', description: '로딩·오류·도시 목록·검색 결과 없음 상태를 구분합니다.' },
+              { name: 'v-for + :key', description: 'filteredWeatherList를 WeatherCard 목록으로 렌더링합니다.' },
+              { name: 'v-bind (:) + v-on (@)', description: 'WeatherCard props를 전달하고 카드 이벤트를 부모 메서드에 연결합니다.' },
+            ]"
+            :components="[
+              { name: 'WeatherParent', description: '검색·정렬·선택 상태를 관리하는 부모 컴포넌트입니다.' },
+              { name: 'SearchBar', description: '도시 검색어를 입력받는 자식 컴포넌트입니다.' },
+              { name: 'WeatherCard', description: '도시별 날씨와 사용자 액션을 표시하는 자식 컴포넌트입니다.' },
+            ]"
+          />
         </section>
 
         <WeatherComparisonChart :cities="filteredWeatherList" />

@@ -5,6 +5,8 @@ import UnitToggler from './components/exercise/UnitToggler.vue'
 </script>
 
 <template>
+
+  <!-- 헤더  -->
   <header class="app-header">
     <div class="app-header-inner">
       <nav class="navigation-bar" aria-label="주요 메뉴">
@@ -17,11 +19,22 @@ import UnitToggler from './components/exercise/UnitToggler.vue'
       <UnitToggler />
     </div>
   </header>
+  <!-- 헤더는 항상 표시되는 부분 -->
 
+  <!-- RouterView (페이지가 바뀌는 부분)
+        ├── HomeView.vue
+        ├── PracticeView.vue
+        └── ProjectView.vue
+  여기가 실제로 바꾸는 부분임
+  router/index.js에서 설정한 라우터에 따라 바뀌는 부분을 확인할 수 있도록
+  -->
   <main class="app-main">
     <RouterView />
   </main>
+
 </template>
+
+<!-- CSS는 Scoped로 여기서 바꾸는 것임. 근데 나 어차피 디자인 안할 거니까 일단은 생략. -->
 
 <style scoped>
 .app-header {

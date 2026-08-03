@@ -44,6 +44,30 @@ const projectStructureCard = {
 ├── services/locationApi.js    # Nominatim 주소 검색
 ├── stores/configStore.js      # 온도 단위 전역 상태
 └── views/                     # 라우트별 화면`,
+  homeFlowDiagram: `App.vue
+└── <RouterView>
+    └── WeatherHomeView.vue
+        └── WeatherParent.vue
+            ├── ref: weatherList / searchQuery / selectedCityInfo
+            ├── computed: filteredWeatherList
+            ├── watch / watchEffect: 상태 변화 추적
+            │
+            └── <BaseDashboardCard>
+                └── <slot>
+                    ├── LocationSearchPanel
+                    │   ├── v-model: 주소 검색어
+                    │   ├── v-if / v-for: 검색 결과와 지도
+                    │   └── @add-location: 지역 추가
+                    ├── SearchBar
+                    │   ├── :current-query: 검색어 props
+                    │   └── @update-query: 검색어 emits
+                    ├── WeatherCard v-for
+                    │   ├── :city-item: 도시 날씨 props
+                    │   └── @select-card / @click-detail
+                    ├── WeatherComparisonChart
+                    │   └── v-model: 기온 / 습도 / 풍속
+                    └── WeatherForecastPanel
+                        └── v-if / v-for: 5일 예보 표시`,
   definitions: [
     { term: '컴포넌트', description: '화면을 기능 단위로 나눈 Vue 파일입니다.' },
     { term: '서비스', description: '외부 API 통신처럼 화면 밖의 로직을 분리한 영역입니다.' },
@@ -459,6 +483,14 @@ const toggleCard = (cardId) => {
                 </li>
               </ul>
             </div>
+
+            <div class="info-section info-section-wide">
+              <h3>홈 화면 Top-down 흐름</h3>
+              <p class="info-description">
+                앱의 시작점에서 부모 상태와 자식 컴포넌트, 주요 v-directive가 어떻게 연결되는지 보여줍니다.
+              </p>
+              <pre>{{ projectStructureCard.homeFlowDiagram }}</pre>
+            </div>
           </div>
 
           <div class="diagram-section">
@@ -664,6 +696,16 @@ h1 {
   margin: 0 0 10px;
   color: #1e3a8a;
   font-size: 0.98rem;
+}
+
+.info-section-wide {
+  grid-column: 1 / -1;
+}
+
+.info-description {
+  margin: 0 0 10px;
+  color: #64748b;
+  line-height: 1.5;
 }
 
 .info-list {

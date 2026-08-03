@@ -4,6 +4,8 @@ import { computed, watch } from 'vue'
 import { useConfigStore } from '@/stores/configStore'
 import { createDebugLogger } from '@/utils/debugLogger'
 
+import PanelInfo from './PanelInfo.vue'
+
 const props = defineProps({
   city: {
     type: Object,
@@ -118,6 +120,18 @@ watch(
     >
       표시할 5일 예보가 없습니다.
     </p>
+
+    <PanelInfo
+      :directives="[
+        { name: 'v-if / v-else-if / v-else', description: '로딩·오류·예보 데이터·빈 상태를 순서대로 구분합니다.' },
+        { name: 'v-for + :key', description: '날짜별 예보 카드를 반복하고 forecast.id로 식별합니다.' },
+        { name: 'v-bind (:city, :forecasts 등)', description: '부모가 전달한 도시·예보·로딩·오류 props를 사용합니다.' },
+      ]"
+      :components="[
+        { name: 'WeatherForecastPanel', description: '선택 도시의 5일 예보를 표시하는 현재 패널입니다.' },
+        { name: 'WeatherParent', description: 'forecastCity와 forecastList를 props로 전달하는 부모입니다.' },
+      ]"
+    />
   </section>
 </template>
 

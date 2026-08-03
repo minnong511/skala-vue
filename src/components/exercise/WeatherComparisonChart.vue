@@ -4,6 +4,8 @@ import { computed, ref, watch } from 'vue'
 import { useConfigStore } from '@/stores/configStore'
 import { createDebugLogger } from '@/utils/debugLogger'
 
+import PanelInfo from './PanelInfo.vue'
+
 const props = defineProps({
   cities: {
     type: Array,
@@ -155,6 +157,19 @@ const highestCity = computed(() => chartRows.value[0] ?? null)
           : '비교할 도시를 2개 이상 선택해주세요.'
       }}
     </p>
+
+    <PanelInfo
+      :directives="[
+        { name: 'v-model', description: 'select와 metric 상태를 연결해 비교 기준을 바꿉니다.' },
+        { name: 'v-if / v-else', description: '도시 수와 데이터 유무에 따라 요약·차트·빈 상태를 보여줍니다.' },
+        { name: 'v-for + :key', description: '도시별 비교 행을 반복하고 metric·도시 조합으로 식별합니다.' },
+        { name: 'v-bind (:cities, :style)', description: '부모의 도시 목록과 막대 너비를 컴포넌트·스타일에 전달합니다.' },
+      ]"
+      :components="[
+        { name: 'WeatherComparisonChart', description: '도시별 기온·습도·풍속 비교를 그리는 현재 패널입니다.' },
+        { name: 'WeatherParent', description: 'filteredWeatherList를 cities prop으로 전달하는 부모입니다.' },
+      ]"
+    />
   </section>
 </template>
 
