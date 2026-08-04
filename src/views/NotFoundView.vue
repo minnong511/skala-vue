@@ -195,6 +195,39 @@ p {
   transform: scale(0.98); /* 클릭 시 살짝 눌리는 효과 */
 }
 
+/* 404 화면은 카드뿐 아니라 바깥 배경과 본문도 함께 다크 모드로 전환합니다. */
+:global(#app .app-shell.theme-dark) .not-found-container {
+  background-color: #1c1c1e;
+  color: #f5f5f7;
+}
+
+:global(#app .app-shell.theme-dark) .not-found-content {
+  border-color: #48484a;
+  background-color: #2c2c2e;
+  box-shadow: 0 20px 55px rgb(0 0 0 / 34%);
+}
+
+:global(#app .app-shell.theme-dark) .mascot-caption {
+  color: #aeaeb2;
+}
+
+:global(#app .app-shell.theme-dark) h2 {
+  color: #f5f5f7;
+}
+
+:global(#app .app-shell.theme-dark) p {
+  color: #d1d1d6;
+}
+
+:global(#app .app-shell.theme-dark) .home-button {
+  background-color: #0a84ff;
+  color: #ffffff;
+}
+
+:global(#app .app-shell.theme-dark) .home-button:hover {
+  background-color: #409cff;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .not-found-photo,
   .error-icon,

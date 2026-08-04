@@ -159,6 +159,12 @@ a,
   color: #f5f5f7;
 }
 
+/* 404 화면의 바깥 영역도 카드와 같은 테마를 사용합니다. */
+#app .app-shell.theme-dark .not-found-container {
+  background-color: #1c1c1e;
+  color: #f5f5f7;
+}
+
 #app .app-shell.theme-dark .app-header {
   border-bottom-color: rgb(255 255 255 / 12%);
   background: rgb(28 28 30 / 94%);
@@ -353,4 +359,317 @@ a,
   justify-content: center;
   box-sizing: border-box;
   white-space: nowrap;
+}
+
+/*
+ * Dark mode visual system
+ * 화면 전체를 같은 팔레트로 묶고, 카드와 본문 사이의 대비를 안정적으로 유지합니다.
+ */
+#app .app-shell.theme-dark {
+  --dark-bg: #0b0b0d;
+  --dark-surface: #1c1c1e;
+  --dark-surface-raised: #2c2c2e;
+  --dark-surface-soft: #3a3a3c;
+  --dark-border: #48484a;
+  --dark-border-strong: #636366;
+  --dark-text: #f4f7fb;
+  --dark-text-muted: #b5c1d2;
+  --dark-text-subtle: #8e9db1;
+  --dark-accent: #64d2ff;
+  --dark-accent-strong: #0a84ff;
+  --dark-danger-bg: #48242a;
+  --dark-danger-text: #ffb4ab;
+  min-height: 100vh;
+  background: var(--dark-bg);
+  color: var(--dark-text);
+  color-scheme: dark;
+}
+
+#app .app-shell.theme-dark .app-main {
+  min-height: calc(100vh - 92px);
+  background: var(--dark-bg);
+}
+
+/* app-shell 바깥의 body 여백에도 라이트·파란 배경이 남지 않도록 합니다. */
+body:has(#app .app-shell.theme-dark) {
+  background: #0b0b0d;
+  color: #f4f7fb;
+}
+
+#app .app-shell.theme-dark .app-header {
+  border-bottom-color: rgb(148 163 184 / 22%);
+  background: rgb(11 18 32 / 90%);
+  box-shadow: 0 12px 36px rgb(0 0 0 / 28%);
+}
+
+#app .app-shell.theme-dark :is(
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span,
+  label,
+  strong,
+  small,
+  dt,
+  dd,
+  li,
+  code,
+  summary,
+  a
+) {
+  color: var(--dark-text);
+}
+
+#app .app-shell.theme-dark :is(
+  .page-heading > p:last-child,
+  .card-summary,
+  .description,
+  .location-detail,
+  .weather-status,
+  .info-description,
+  .comparison-summary,
+  .dashboard-meta,
+  .mascot-caption
+) {
+  color: var(--dark-text-muted);
+}
+
+#app .app-shell.theme-dark :is(
+  input,
+  select,
+  option,
+  textarea
+) {
+  border-color: var(--dark-border);
+  background: var(--dark-surface);
+  color: var(--dark-text);
+  color-scheme: dark;
+}
+
+#app .app-shell.theme-dark :is(input, textarea)::placeholder {
+  color: var(--dark-text-subtle);
+  opacity: 1;
+}
+
+#app .app-shell.theme-dark :is(
+  .base-dashboard-card,
+  .weather-card,
+  .comparison-panel,
+  .location-search-panel,
+  .forecast-panel,
+  .map-panel,
+  .current-map-section,
+  .weather-overview,
+  .project-page,
+  .project-card,
+  .structure-card,
+  .detail-container,
+  .info-card,
+  .not-found-content
+) {
+  border-color: var(--dark-border);
+  background: rgb(28 28 30 / 94%);
+  box-shadow: 0 18px 45px rgb(0 0 0 / 28%);
+}
+
+#app .app-shell.theme-dark :is(
+  .project-card-content,
+  .weather-search-bar,
+  .weather-toolbar,
+  .chart-controls,
+  .result-item,
+  .forecast-card,
+  .chart-row,
+  dl div,
+  .empty-message,
+  .loading-message,
+  .api-message,
+  .location-message
+) {
+  border-color: var(--dark-border);
+  background: rgb(44 44 46 / 92%);
+}
+
+#app .app-shell.theme-dark :is(
+  .status-bar,
+  .loading-message,
+  .api-message,
+  .forecast-message,
+  .empty-message,
+  .location-message
+) {
+  color: var(--dark-text-muted);
+}
+
+#app .app-shell.theme-dark :is(
+  .eyebrow,
+  .info-section h3,
+  .diagram-section h3,
+  .definition-section h3,
+  .definition-list dt,
+  .panel-heading,
+  .map-heading,
+  .map-preview-heading,
+  .chart-label span,
+  .unit-label
+) {
+  color: var(--dark-accent);
+}
+
+#app .app-shell.theme-dark :is(
+  .project-card-header,
+  .project-card-header:hover,
+  .toggle-icon
+) {
+  color: var(--dark-text);
+}
+
+#app .app-shell.theme-dark .project-card-header:hover {
+  background: rgb(73 97 127 / 26%);
+}
+
+#app .app-shell.theme-dark .info-list code {
+  background: var(--dark-surface-soft);
+  color: var(--dark-accent);
+}
+
+#app .app-shell.theme-dark pre {
+  border-color: var(--dark-border);
+  background: #080d17;
+  color: #c7c5ff;
+}
+
+#app .app-shell.theme-dark :is(
+  .btn-detail,
+  .refresh-button,
+  .search-row button,
+  .add-button,
+  .location-actions button,
+  .home-button
+) {
+  border-color: transparent;
+  background: var(--dark-accent-strong);
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgb(10 132 255 / 26%);
+}
+
+#app .app-shell.theme-dark :is(
+  .btn-detail:hover,
+  .refresh-button:hover:not(:disabled),
+  .search-row button:hover,
+  .add-button:hover,
+  .location-actions button:hover:not(:disabled),
+  .home-button:hover
+) {
+  background: #409cff;
+}
+
+#app .app-shell.theme-dark .remove-button {
+  border-color: rgb(255 180 171 / 42%);
+  background: var(--dark-danger-bg);
+  color: var(--dark-danger-text);
+}
+
+#app .app-shell.theme-dark .remove-button:hover {
+  background: #633039;
+}
+
+#app .app-shell.theme-dark .favorite-button {
+  color: #9eabc0;
+}
+
+#app .app-shell.theme-dark .favorite-button:hover,
+#app .app-shell.theme-dark .favorite-button.active {
+  color: #ffd60a;
+}
+
+#app .app-shell.theme-dark .temperature,
+#app .app-shell.theme-dark .weather-card .temperature,
+#app .app-shell.theme-dark .comparison-summary strong {
+  color: var(--dark-accent);
+}
+
+#app .app-shell.theme-dark .hot {
+  background: #59381b;
+  color: #ffd166;
+}
+
+#app .app-shell.theme-dark .cool {
+  background: #34345f;
+  color: #c7c5ff;
+}
+
+#app .app-shell.theme-dark .bar-track {
+  background: #35445b;
+}
+
+#app .app-shell.theme-dark .bar-fill {
+  background: var(--dark-accent-strong);
+  box-shadow: 0 0 18px rgb(100 210 255 / 26%);
+}
+
+#app .app-shell.theme-dark .status-bar {
+  border-color: #2f7156;
+  background: #173b2d;
+}
+
+#app .app-shell.theme-dark .api-message,
+#app .app-shell.theme-dark .forecast-message.error {
+  border-color: #82454a;
+  background: #48242a;
+  color: var(--dark-danger-text);
+}
+
+#app .app-shell.theme-dark .loading-message {
+  border-color: #3d6287;
+  background: #1b3857;
+}
+
+#app .app-shell.theme-dark .not-found-container {
+  width: 100%;
+  min-height: calc(100vh - 92px);
+  border-radius: 0;
+  background: var(--dark-bg);
+  background-image: none;
+  color: var(--dark-text);
+}
+
+/* 날씨별 배경은 다크 톤을 유지하면서도 테마 차이를 보여줍니다. */
+#app .app-shell.theme-dark .dashboard-wrapper.weather-theme-default,
+#app .app-shell.theme-dark .detail-container.weather-theme-default {
+  background: #0b0b0d;
+}
+
+#app .app-shell.theme-dark .dashboard-wrapper.weather-theme-clear,
+#app .app-shell.theme-dark .detail-container.weather-theme-clear {
+  background: #202427;
+}
+
+#app .app-shell.theme-dark .dashboard-wrapper.weather-theme-clouds,
+#app .app-shell.theme-dark .detail-container.weather-theme-clouds {
+  background: #1c1c1e;
+}
+
+#app .app-shell.theme-dark .dashboard-wrapper.weather-theme-rain,
+#app .app-shell.theme-dark .detail-container.weather-theme-rain {
+  background: #151a1f;
+}
+
+#app .app-shell.theme-dark .dashboard-wrapper.weather-theme-storm,
+#app .app-shell.theme-dark .detail-container.weather-theme-storm {
+  background: #211f25;
+}
+
+#app .app-shell.theme-dark .dashboard-wrapper.weather-theme-snow,
+#app .app-shell.theme-dark .detail-container.weather-theme-snow {
+  background: #202326;
+}
+
+#app .app-shell.theme-dark .dashboard-wrapper.weather-theme-mist,
+#app .app-shell.theme-dark .detail-container.weather-theme-mist {
+  background: #202022;
 }

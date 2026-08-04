@@ -886,4 +886,73 @@ pre {
 .structure-card {
   background: rgb(224 231 255 / 62%);
 }
+
+/* 다크 모드에서는 페이지 배경과 카드 내부의 대비를 함께 유지합니다. */
+:global(#app .app-shell.theme-dark) .project-page {
+  border-color: #38383a;
+  background: #1c1c1e;
+  color: #f5f5f7;
+}
+
+:global(#app .app-shell.theme-dark) .project-card {
+  border-color: #48484a;
+  background: #2c2c2e;
+  box-shadow: 0 16px 34px rgb(0 0 0 / 24%);
+}
+
+:global(#app .app-shell.theme-dark) .structure-card {
+  border-color: #5e5ce6;
+  background: #292943;
+}
+
+:global(#app .app-shell.theme-dark) .project-card.expanded {
+  border-color: #64d2ff;
+}
+
+:global(#app .app-shell.theme-dark) .project-card-header {
+  color: #f5f5f7;
+}
+
+:global(#app .app-shell.theme-dark) .project-card-header:hover {
+  background: #3a3a3c;
+}
+
+:global(#app .app-shell.theme-dark) .toggle-icon,
+:global(#app .app-shell.theme-dark) .eyebrow,
+:global(#app .app-shell.theme-dark) .info-section h3,
+:global(#app .app-shell.theme-dark) .diagram-section h3,
+:global(#app .app-shell.theme-dark) .definition-section h3,
+:global(#app .app-shell.theme-dark) .definition-list dt {
+  color: #64d2ff;
+}
+
+:global(#app .app-shell.theme-dark) .page-heading h1,
+:global(#app .app-shell.theme-dark) .project-card-content {
+  color: #f5f5f7;
+}
+
+:global(#app .app-shell.theme-dark) .project-card-content {
+  border-top-color: #48484a;
+  background: #252527;
+}
+
+:global(#app .app-shell.theme-dark) .page-heading > p:last-child,
+:global(#app .app-shell.theme-dark) .card-summary,
+:global(#app .app-shell.theme-dark) .info-description,
+:global(#app .app-shell.theme-dark) .info-list,
+:global(#app .app-shell.theme-dark) .definition-list,
+:global(#app .app-shell.theme-dark) .definition-list dd {
+  color: #d1d1d6;
+}
+
+:global(#app .app-shell.theme-dark) .info-list code {
+  background: #3a3a3c;
+  color: #64d2ff;
+}
+
+:global(#app .app-shell.theme-dark) pre {
+  border-color: #48484a;
+  background: #111113;
+  color: #b5b3ff;
+}
 </style>
