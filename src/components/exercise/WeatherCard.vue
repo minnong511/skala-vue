@@ -200,7 +200,7 @@ const removeLocation = () => {
   padding: 0 2px;
   border: 0;
   background: transparent;
-  color: #94a3b8;
+  color: #64748b;
   font-size: 1.6rem;
   line-height: 1;
   cursor: pointer;
@@ -228,7 +228,8 @@ const removeLocation = () => {
 
 .favorite-button:hover,
 .favorite-button.active {
-  color: #f59e0b;
+  color: #7c3aed;
+  text-shadow: 0 0 12px rgb(124 58 237 / 42%);
 }
 
 h3 {
@@ -281,13 +282,13 @@ h3 {
 }
 
 .hot {
-  background: #ffe4e6;
-  color: #be123c;
+  background: rgb(254 215 170 / 78%);
+  color: #c2410c;
 }
 
 .cool {
-  background: #dbeafe;
-  color: #1d4ed8;
+  background: rgb(207 250 254 / 78%);
+  color: #0e7490;
 }
 
 .btn-detail {
@@ -296,7 +297,7 @@ h3 {
   padding: 10px 14px;
   border: 1px solid rgb(255 255 255 / 40%);
   border-radius: 8px;
-  background: linear-gradient(135deg, #3b82f6, #4f46e5);
+  background: #4f46e5;
   box-shadow: 0 8px 18px rgb(37 99 235 / 24%);
   color: #ffffff;
   font-weight: 700;
@@ -304,15 +305,13 @@ h3 {
 }
 
 .btn-detail:hover {
-  background: linear-gradient(135deg, #2563eb, #4338ca);
+  background: #4338ca;
 }
 
 .weather-card {
   overflow: hidden;
   border-radius: 20px;
-  background:
-    linear-gradient(145deg, rgb(255 255 255 / 74%), rgb(255 255 255 / 38%)),
-    var(--glass-surface);
+  background: var(--glass-surface);
   box-shadow: 0 16px 36px rgb(30 64 175 / 12%);
 }
 
@@ -321,7 +320,7 @@ h3 {
   inset: -35% 35% auto -20%;
   height: 150px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgb(125 211 252 / 28%), transparent 68%);
+  background: rgb(125 211 252 / 14%);
   content: '';
   pointer-events: none;
 }

@@ -564,7 +564,7 @@ h2 {
 .search-row button,
 .add-button {
   border-color: rgb(255 255 255 / 42%);
-  background: linear-gradient(135deg, #3b82f6, #4f46e5);
+  background: #4f46e5;
   box-shadow: 0 8px 16px rgb(37 99 235 / 18%);
 }
 
@@ -582,9 +582,7 @@ h2 {
 
 .location-search-panel {
   border-radius: 22px;
-  background:
-    linear-gradient(145deg, rgb(255 255 255 / 70%), rgb(255 255 255 / 32%)),
-    var(--glass-surface);
+  background: var(--glass-surface);
   box-shadow: 0 16px 34px rgb(30 64 175 / 10%);
 }
 
@@ -597,7 +595,7 @@ h2 {
 .search-row button,
 .add-button {
   border-radius: 14px;
-  background: linear-gradient(135deg, #2563eb, #6366f1 60%, #06b6d4);
+  background: #4f46e5;
   box-shadow: 0 10px 22px rgb(37 99 235 / 20%);
 }
 

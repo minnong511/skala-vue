@@ -280,7 +280,7 @@ h2 {
   width: var(--bar-width);
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, #60a5fa, #2563eb);
+  background: #8b5cf6;
   animation: fill-bar 0.8s ease-out both;
 }
 
@@ -335,19 +335,17 @@ h2 {
 }
 
 .bar-track {
-  background: rgb(226 232 240 / 62%);
+  background: rgb(224 231 255 / 72%);
   box-shadow: inset 0 1px 3px rgb(30 64 175 / 8%);
 }
 
 .comparison-panel {
   border-radius: 24px;
-  background:
-    linear-gradient(145deg, rgb(255 255 255 / 70%), rgb(255 255 255 / 36%)),
-    var(--glass-surface-strong);
+  background: var(--glass-surface-strong);
 }
 
 .bar-fill {
-  background: linear-gradient(90deg, #06b6d4, #3b82f6 54%, #6366f1);
-  box-shadow: 0 0 18px rgb(59 130 246 / 38%);
+  background: #8b5cf6;
+  box-shadow: 0 0 18px rgb(139 92 246 / 42%);
 }
 </style>

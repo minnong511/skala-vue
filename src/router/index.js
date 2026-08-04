@@ -40,6 +40,18 @@ const routes = [
     component: () => import('../views/WeatherDetailView.vue'),
   },
   // NotFound 임, 404 페이지임.
+  // 일부러 잘못된 페이지로 구현
+
+  
+  // catch-all 라우트 -> 어떤 라우트와도 일치하는 주소를 마치막에 처리하는 예외용 라우트
+  // NotFoundView.vue 표시
+  // 반드시 라우트 목록의 가장 아래에 배치해야 한다.
+    // 다만 Axios API 오류
+    // JavaScirpt 살행 오류
+    // API 키 오류
+    // 컴포넌트 내부 오류
+    // 와 같은 오류는 처리하지 않는다.
+
   {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',

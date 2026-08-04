@@ -6,7 +6,7 @@
   --vt-c-white-soft: #f8f8f8;
   --vt-c-white-mute: #f2f2f2;
 
-  --vt-c-indigo: #2c3e50;
+  --vt-c-indigo: #1c1c1e;
 
   --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
   --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
@@ -31,15 +31,15 @@
 
   --section-gap: 160px;
 
-  --glass-surface: rgb(255 255 255 / 54%);
-  --glass-surface-strong: rgb(255 255 255 / 72%);
-  --glass-border: rgb(255 255 255 / 78%);
-  --glass-shadow: 0 20px 55px rgb(30 64 175 / 15%);
-  --glass-blur: blur(22px) saturate(145%);
-  --glass-blue: #2563eb;
-  --glass-cyan: #06b6d4;
-  --glass-violet: #6366f1;
-  --glass-ink: #172554;
+  --glass-surface: rgb(255 255 255 / 78%);
+  --glass-surface-strong: rgb(255 255 255 / 90%);
+  --glass-border: rgb(255 255 255 / 88%);
+  --glass-shadow: 0 20px 55px rgb(28 28 30 / 10%);
+  --glass-blur: blur(22px) saturate(120%);
+  --glass-blue: #0a84ff;
+  --glass-cyan: #0a84ff;
+  --glass-violet: #5e5ce6;
+  --glass-ink: #1c1c1e;
 }
 
 *,
@@ -53,11 +53,7 @@
 body {
   min-height: 100vh;
   color: var(--color-text);
-  background:
-    radial-gradient(circle at 8% 0%, rgb(125 211 252 / 48%), transparent 30%),
-    radial-gradient(circle at 92% 12%, rgb(196 181 253 / 42%), transparent 34%),
-    radial-gradient(circle at 52% 100%, rgb(186 230 253 / 40%), transparent 36%),
-    linear-gradient(135deg, #dbeafe 0%, #f8fbff 46%, #ede9fe 100%);
+  background: #f5f5f7;
   background-attachment: fixed;
   background-size: 140% 140%;
   line-height: 1.6;

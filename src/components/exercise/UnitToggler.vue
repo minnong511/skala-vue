@@ -71,7 +71,7 @@ const toggleUnit = () => {
 
 .toggle-btn {
   border-radius: 999px;
-  background: linear-gradient(135deg, rgb(239 246 255 / 78%), rgb(224 231 255 / 74%));
+  background: rgb(224 231 255 / 74%);
   font-family: inherit;
 }
 </style>

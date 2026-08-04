@@ -828,21 +828,15 @@ pre {
 
 .project-page {
   border-radius: 26px;
-  background:
-    linear-gradient(145deg, rgb(255 255 255 / 64%), rgb(255 255 255 / 32%)),
-    var(--glass-surface);
+  background: var(--glass-surface);
 }
 
 .project-card {
   border-radius: 18px;
-  background:
-    linear-gradient(145deg, rgb(255 255 255 / 62%), rgb(255 255 255 / 28%)),
-    var(--glass-surface);
+  background: var(--glass-surface);
 }
 
 .structure-card {
-  background:
-    linear-gradient(145deg, rgb(219 234 254 / 64%), rgb(224 231 255 / 34%)),
-    var(--glass-surface);
+  background: rgb(224 231 255 / 62%);
 }
 </style>

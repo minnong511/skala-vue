@@ -10,9 +10,7 @@
   padding: 28px;
   border: 1px solid var(--glass-border);
   border-radius: 24px;
-  background:
-    linear-gradient(145deg, rgb(255 255 255 / 68%), rgb(255 255 255 / 34%)),
-    var(--glass-surface);
+  background: var(--glass-surface);
   box-shadow: var(--glass-shadow);
   backdrop-filter: var(--glass-blur);
 }

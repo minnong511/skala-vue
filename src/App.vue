@@ -1,36 +1,48 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 
+import LightMode from './components/exercise/LightMode.vue'
 import UnitToggler from './components/exercise/UnitToggler.vue'
+import { useConfigStore } from './stores/configStore'
+
+const configStore = useConfigStore()
 </script>
 
 <template>
+  <div
+    class="app-shell"
+    :class="{ 'theme-dark': configStore.isDarkMode }"
+  >
+    <!-- 헤더  -->
+    <header class="app-header">
+      <div class="app-header-inner">
+        <nav class="navigation-bar" aria-label="주요 메뉴">
+          <RouterLink to="/" class="brand-link">날씨 대시보드</RouterLink>
+          <RouterLink to="/" class="navigation-link">홈</RouterLink>
+          <RouterLink to="/practice" class="navigation-link">실습 과제</RouterLink>
+          <RouterLink to="/project" class="navigation-link">프로젝트 타임라인</RouterLink>
+          <RouterLink to="/additional-feature" class="navigation-link">추가 기능(404 확인용)</RouterLink>
+        </nav>
 
-  <!-- 헤더  -->
-  <header class="app-header">
-    <div class="app-header-inner">
-      <nav class="navigation-bar" aria-label="주요 메뉴">
-        <RouterLink to="/" class="brand-link">날씨 대시보드</RouterLink>
-        <RouterLink to="/" class="navigation-link">홈</RouterLink>
-        <RouterLink to="/practice" class="navigation-link">실습 과제</RouterLink>
-        <RouterLink to="/project" class="navigation-link">프로젝트 타임라인</RouterLink>
-      </nav>
+        <div class="header-controls">
+          <UnitToggler />
+          <LightMode />
+        </div>
+      </div>
+    </header>
+    <!-- 헤더는 항상 표시되는 부분 -->
 
-      <UnitToggler />
-    </div>
-  </header>
-  <!-- 헤더는 항상 표시되는 부분 -->
-
-  <!-- RouterView (페이지가 바뀌는 부분)
+    <!-- RouterView (페이지가 바뀌는 부분)
         ├── HomeView.vue
         ├── PracticeView.vue
         └── ProjectView.vue
-  여기가 실제로 바꾸는 부분임
-  router/index.js에서 설정한 라우터에 따라 바뀌는 부분을 확인할 수 있도록
-  -->
-  <main class="app-main">
-    <RouterView />
-  </main>
+    여기가 실제로 바꾸는 부분임
+    router/index.js에서 설정한 라우터에 따라 바뀌는 부분을 확인할 수 있도록
+    -->
+    <main class="app-main">
+      <RouterView />
+    </main>
+  </div>
 
 </template>
 
@@ -55,6 +67,13 @@ import UnitToggler from './components/exercise/UnitToggler.vue'
   margin: 0 auto;
   padding: 16px 24px;
   gap: 24px;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
 }
 
 .navigation-bar {
@@ -94,6 +113,11 @@ import UnitToggler from './components/exercise/UnitToggler.vue'
     align-items: flex-start;
     flex-direction: column;
     padding: 16px;
+  }
+
+  .header-controls {
+    justify-content: flex-start;
+    flex-wrap: wrap;
   }
 
   .navigation-bar {

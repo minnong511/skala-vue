@@ -1195,12 +1195,12 @@ dashboard-wrapper
 
 .refresh-button {
   border-color: rgb(255 255 255 / 42%);
-  background: linear-gradient(135deg, #3b82f6, #4f46e5);
+  background: #4f46e5;
   box-shadow: 0 8px 18px rgb(37 99 235 / 22%);
 }
 
 .refresh-button:hover:not(:disabled) {
-  background: linear-gradient(135deg, #2563eb, #4338ca);
+  background: #4338ca;
 }
 
 .empty-message {
@@ -1242,50 +1242,38 @@ dashboard-wrapper
   width: 260px;
   height: 260px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgb(99 102 241 / 22%), transparent 68%);
+  background: rgb(99 102 241 / 10%);
   content: '';
   filter: blur(8px);
   pointer-events: none;
 }
 
 .dashboard-wrapper.weather-theme-default {
-  background: linear-gradient(135deg, rgb(238 246 255 / 52%), rgb(244 240 255 / 52%));
+  background: rgb(241 245 249 / 82%);
 }
 
 .dashboard-wrapper.weather-theme-clear {
-  background:
-    radial-gradient(circle at 84% 4%, rgb(250 204 21 / 34%), transparent 30%),
-    linear-gradient(135deg, rgb(186 230 253 / 72%), rgb(239 246 255 / 56%) 55%, rgb(224 231 255 / 60%));
+  background: rgb(224 242 254 / 78%);
 }
 
 .dashboard-wrapper.weather-theme-clouds {
-  background:
-    radial-gradient(circle at 18% 8%, rgb(226 232 240 / 68%), transparent 34%),
-    linear-gradient(135deg, rgb(203 213 225 / 72%), rgb(239 246 255 / 58%) 58%, rgb(224 231 255 / 62%));
+  background: rgb(226 232 240 / 78%);
 }
 
 .dashboard-wrapper.weather-theme-rain {
-  background:
-    radial-gradient(circle at 86% 12%, rgb(96 165 250 / 28%), transparent 30%),
-    linear-gradient(135deg, rgb(147 197 253 / 74%), rgb(30 64 175 / 20%) 52%, rgb(165 180 252 / 64%));
+  background: rgb(191 219 254 / 78%);
 }
 
 .dashboard-wrapper.weather-theme-storm {
-  background:
-    radial-gradient(circle at 78% 4%, rgb(129 140 248 / 36%), transparent 28%),
-    linear-gradient(135deg, rgb(49 46 129 / 74%), rgb(67 56 202 / 46%) 55%, rgb(30 41 59 / 76%));
+  background: rgb(99 102 241 / 68%);
 }
 
 .dashboard-wrapper.weather-theme-snow {
-  background:
-    radial-gradient(circle at 16% 6%, rgb(255 255 255 / 76%), transparent 28%),
-    linear-gradient(135deg, rgb(224 242 254 / 78%), rgb(239 246 255 / 68%) 55%, rgb(237 233 254 / 72%));
+  background: rgb(239 246 255 / 82%);
 }
 
 .dashboard-wrapper.weather-theme-mist {
-  background:
-    radial-gradient(circle at 72% 8%, rgb(203 213 225 / 54%), transparent 32%),
-    linear-gradient(135deg, rgb(203 213 225 / 72%), rgb(226 232 240 / 64%) 55%, rgb(224 231 255 / 62%));
+  background: rgb(203 213 225 / 78%);
 }
 
 @media (prefers-reduced-motion: reduce) {

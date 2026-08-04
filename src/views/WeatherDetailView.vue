@@ -21,6 +21,8 @@ const locationInfo = ref(null)
 const isLoading = ref(false)
 const errorMessage = ref('')
 
+
+// 기현님 사진 넣는 곳 
 const weatherTheme = computed(() => {
   return getWeatherTheme(cityData.value?.icon)
 })
@@ -165,6 +167,13 @@ const goHome = () => {
           <dd>{{ cityData.wind }}</dd>
         </div>
       </dl>
+
+      <img
+        v-if="weatherTheme === 'clear'"
+        class="sunny-weather-photo"
+        src="/sunny-person.png"
+        alt="맑은 날씨 안내 이미지"
+      />
 
       <iframe
         class="map-frame"
@@ -346,70 +355,56 @@ dd {
   backdrop-filter: blur(12px);
 }
 
+.sunny-weather-photo {
+  display: block;
+  width: min(100%, 420px);
+  max-height: 360px;
+  margin: 22px auto;
+  border-radius: 18px;
+  object-fit: contain;
+  box-shadow: 0 12px 28px rgb(28 28 30 / 12%);
+}
+
 .detail-container {
   transition: background 0.6s ease;
 }
 
 .detail-container.weather-theme-default {
-  background:
-    linear-gradient(135deg, rgb(238 246 255 / 54%), rgb(244 240 255 / 54%)),
-    var(--glass-surface);
+  background: rgb(241 245 249 / 82%);
 }
 
 .detail-container.weather-theme-clear {
-  background:
-    radial-gradient(circle at 86% 4%, rgb(250 204 21 / 34%), transparent 30%),
-    linear-gradient(135deg, rgb(186 230 253 / 70%), rgb(239 246 255 / 54%) 58%),
-    var(--glass-surface);
+  background: rgb(224 242 254 / 78%);
 }
 
 .detail-container.weather-theme-clouds {
-  background:
-    radial-gradient(circle at 18% 8%, rgb(226 232 240 / 66%), transparent 34%),
-    linear-gradient(135deg, rgb(203 213 225 / 70%), rgb(239 246 255 / 56%) 58%),
-    var(--glass-surface);
+  background: rgb(226 232 240 / 78%);
 }
 
 .detail-container.weather-theme-rain {
-  background:
-    radial-gradient(circle at 84% 10%, rgb(96 165 250 / 28%), transparent 30%),
-    linear-gradient(135deg, rgb(147 197 253 / 70%), rgb(30 64 175 / 18%) 55%),
-    var(--glass-surface);
+  background: rgb(191 219 254 / 78%);
 }
 
 .detail-container.weather-theme-storm {
-  background:
-    radial-gradient(circle at 78% 4%, rgb(129 140 248 / 36%), transparent 28%),
-    linear-gradient(135deg, rgb(49 46 129 / 70%), rgb(67 56 202 / 42%) 58%),
-    var(--glass-surface);
+  background: rgb(99 102 241 / 68%);
 }
 
 .detail-container.weather-theme-snow {
-  background:
-    radial-gradient(circle at 16% 6%, rgb(255 255 255 / 74%), transparent 28%),
-    linear-gradient(135deg, rgb(224 242 254 / 76%), rgb(237 233 254 / 68%) 58%),
-    var(--glass-surface);
+  background: rgb(239 246 255 / 82%);
 }
 
 .detail-container.weather-theme-mist {
-  background:
-    radial-gradient(circle at 72% 8%, rgb(203 213 225 / 52%), transparent 32%),
-    linear-gradient(135deg, rgb(203 213 225 / 70%), rgb(226 232 240 / 62%) 58%),
-    var(--glass-surface);
+  background: rgb(203 213 225 / 78%);
 }
 
 .detail-container {
   border-radius: 26px;
-  background:
-    linear-gradient(145deg, rgb(255 255 255 / 66%), rgb(255 255 255 / 34%)),
-    var(--glass-surface);
+  background: var(--glass-surface);
 }
 
 .info-card {
   border-radius: 20px;
-  background:
-    linear-gradient(145deg, rgb(255 255 255 / 68%), rgb(255 255 255 / 34%)),
-    var(--glass-surface);
+  background: var(--glass-surface);
 }
 
 dl div {

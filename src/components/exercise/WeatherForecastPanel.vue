@@ -357,9 +357,7 @@ h2 {
 
 .forecast-card {
   border-radius: 18px;
-  background:
-    linear-gradient(145deg, rgb(255 255 255 / 66%), rgb(255 255 255 / 34%)),
-    var(--glass-surface);
+  background: var(--glass-surface);
   box-shadow: 0 12px 26px rgb(30 64 175 / 8%);
 }
 

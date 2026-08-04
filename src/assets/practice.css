@@ -46,7 +46,7 @@ h3 {
 hr {
   border: none;
   height: 3px;
-  background: linear-gradient(to right, #42b883, #35495e); /* Vue 포인트 컬러 */
+  background: #42b883; /* Vue 포인트 컬러 */
   border-radius: 2px;
   margin-bottom: 14px;
 }
