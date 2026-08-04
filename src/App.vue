@@ -19,7 +19,6 @@ const configStore = useConfigStore()
         <nav class="navigation-bar" aria-label="주요 메뉴">
           <RouterLink to="/" class="brand-link">날씨 대시보드</RouterLink>
           <RouterLink to="/" class="navigation-link">홈</RouterLink>
-          <RouterLink to="/practice" class="navigation-link">실습 과제</RouterLink>
           <RouterLink to="/project" class="navigation-link">프로젝트 타임라인</RouterLink>
           <RouterLink to="/additional-feature" class="navigation-link">추가 기능(404 확인용)</RouterLink>
         </nav>

@@ -18,6 +18,10 @@ const projectStructureCard = {
       name: 'src/views',
       description: '라우터와 연결되는 화면 단위 컴포넌트를 모아 둔 폴더입니다.',
     },
+    {
+      name: 'LightMode.vue',
+      description: 'Pinia의 테마 상태를 이용해 라이트·다크 모드를 전환합니다.',
+    },
   ],
   directories: [
     'src/components/exercise/, 화면을 구성하는 재사용 컴포넌트',
@@ -25,8 +29,10 @@ const projectStructureCard = {
     'src/components/exercise/LocationSearchPanel.vue, 지역 검색 화면',
     'src/services/locationApi.js, 주소와 좌표 변환',
     'src/stores/, Pinia 전역 상태',
+    'src/components/exercise/LightMode.vue, 테마 전환 버튼',
     'src/router/, 페이지 경로와 지연 로딩 설정',
     'src/views/, 홈, 상세, 실습, 프로젝트 화면',
+    'public/, favicon과 404·맑은 날씨 이미지',
   ],
   diagram: `src/
 ├── App.vue                    # 공통 헤더, RouterView
@@ -42,7 +48,8 @@ const projectStructureCard = {
 ├── router/index.js            # URL과 화면 연결
 ├── services/weatherApi.js     # OpenWeather 현재·5일 예보, Google Maps
 ├── services/locationApi.js    # Nominatim 주소 검색
-├── stores/configStore.js      # 온도 단위 전역 상태
+├── stores/configStore.js      # 온도 단위, 테마 전역 상태
+├── public/                    # favicon과 화면 이미지
 └── views/                     # 라우트별 화면`,
   homeFlowDiagram: `App.vue
 └── <RouterView>
@@ -415,6 +422,46 @@ WeatherForecastPanel`,
       { term: 'Forecast API', description: '현재 날씨가 아니라 미래 시간대의 날씨를 제공하는 API입니다.' },
       { term: '그룹화', description: '3시간 단위 데이터를 같은 날짜끼리 묶는 작업입니다.' },
       { term: '요청 번호', description: '새 요청보다 늦게 도착한 이전 응답을 화면에 반영하지 않도록 확인하는 값입니다.' },
+    ],
+  },
+  {
+    order: 13,
+    id: 'theme-error-assets',
+    title: '화면 테마와 오류 화면 확장',
+    summary: 'Pinia로 라이트·다크 모드를 전환하고, 잘못된 경로의 404 화면과 이미지 리소스를 연결합니다.',
+    variables: [
+      { name: 'theme', description: 'light 또는 dark 화면 테마를 저장하는 Pinia 상태입니다.' },
+      { name: 'isDarkMode', description: '현재 다크 모드인지 계산하는 getter입니다.' },
+      { name: 'toggleTheme', description: '라이트 모드와 다크 모드를 전환하는 action입니다.' },
+      { name: 'pathMatch', description: '등록되지 않은 주소를 catch-all 라우트에서 받는 값입니다.' },
+    ],
+    directories: [
+      'src/stores/configStore.js, 테마 state·getter·action',
+      'src/components/exercise/LightMode.vue, 테마 토글 UI',
+      'src/router/index.js, catch-all 404 라우트',
+      'src/views/NotFoundView.vue, 404 이미지와 로딩 이펙트',
+      'public/, favicon과 안내 이미지 저장',
+    ],
+    diagram: `LightMode 버튼
+      │ toggleTheme()
+      ▼
+configStore.theme ──> App.vue의 theme-dark 클래스
+      │
+      ▼
+다크 모드 CSS 적용
+
+잘못된 주소
+      │
+      ▼
+/:pathMatch(.*)*
+      │
+      ▼
+NotFoundView + 이미지 애니메이션`,
+    definitions: [
+      { term: '테마 상태', description: '앱 전체의 라이트·다크 화면 모드를 기억하는 전역 상태입니다.' },
+      { term: 'catch-all', description: '등록되지 않은 모든 주소를 받아 404 화면으로 연결하는 라우트입니다.' },
+      { term: '정적 리소스', description: 'public 폴더에서 주소로 직접 불러오는 이미지와 favicon 파일입니다.' },
+      { term: 'CSS animation', description: '404 이미지의 회전과 화면 진동을 CSS만으로 실행하는 기능입니다.' },
     ],
   },
 ]

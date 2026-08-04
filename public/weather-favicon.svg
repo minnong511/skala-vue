@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>Weather Dashboard</title>
+  <rect width="64" height="64" rx="16" fill="#f2f2f7" />
+  <circle cx="32" cy="27" r="12" fill="#ffcc00" />
+  <g stroke="#ff9500" stroke-width="3" stroke-linecap="round">
+    <path d="M32 8v5" />
+    <path d="M32 41v5" />
+    <path d="m13 27 5 0" />
+    <path d="m46 27 5 0" />
+    <path d="m18.6 13.6 3.5 3.5" />
+    <path d="m41.9 36.9 3.5 3.5" />
+    <path d="m45.4 13.6-3.5 3.5" />
+    <path d="m22.1 36.9-3.5 3.5" />
+  </g>
+  <path
+    d="M17 48.5h29a8.5 8.5 0 0 0 0-17 11.5 11.5 0 0 0-21.7 2.2A7.5 7.5 0 0 0 17 48.5Z"
+    fill="#0a84ff"
+    stroke="#ffffff"
+    stroke-width="2"
+  />
+</svg>
