@@ -155,6 +155,7 @@ const highestCity = computed(() => chartRows.value[0] ?? null)
           : '비교할 도시를 2개 이상 선택해주세요.'
       }}
     </p>
+
   </section>
 </template>
 
@@ -279,7 +280,7 @@ h2 {
   width: var(--bar-width);
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, #60a5fa, #2563eb);
+  background: #8b5cf6;
   animation: fill-bar 0.8s ease-out both;
 }
 
@@ -318,5 +319,33 @@ h2 {
   .chart-label {
     font-size: 0.9rem;
   }
+}
+
+.comparison-panel {
+  border-color: var(--glass-border);
+  background: var(--glass-surface-strong);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-blur);
+}
+
+.chart-controls select {
+  border-color: rgb(148 163 184 / 38%);
+  background: rgb(255 255 255 / 68%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 80%);
+}
+
+.bar-track {
+  background: rgb(224 231 255 / 72%);
+  box-shadow: inset 0 1px 3px rgb(30 64 175 / 8%);
+}
+
+.comparison-panel {
+  border-radius: 24px;
+  background: var(--glass-surface-strong);
+}
+
+.bar-fill {
+  background: #8b5cf6;
+  box-shadow: 0 0 18px rgb(139 92 246 / 42%);
 }
 </style>

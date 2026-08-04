@@ -4,6 +4,8 @@ import { computed } from 'vue'
 import { useConfigStore } from '@/stores/configStore'
 import { createDebugLogger } from '@/utils/debugLogger'
 
+
+//
 const props = defineProps({
   cityItem: {
     type: Object,
@@ -156,9 +158,11 @@ const removeLocation = () => {
   display: flex;
   flex-direction: column;
   padding: 20px;
-  border: 2px solid #e2e8f0;
+  border: 1px solid rgb(255 255 255 / 78%);
   border-radius: 14px;
-  background: #ffffff;
+  background: rgb(255 255 255 / 62%);
+  box-shadow: 0 12px 28px rgb(30 64 175 / 9%);
+  backdrop-filter: blur(14px) saturate(130%);
   cursor: pointer;
   transition:
     transform 0.2s ease,
@@ -168,8 +172,8 @@ const removeLocation = () => {
 
 .weather-card:hover,
 .weather-card.selected {
-  border-color: #60a5fa;
-  box-shadow: 0 8px 18px rgb(37 99 235 / 12%);
+  border-color: rgb(96 165 250 / 78%);
+  box-shadow: 0 16px 32px rgb(37 99 235 / 18%);
 }
 
 .weather-card:hover {
@@ -177,7 +181,7 @@ const removeLocation = () => {
 }
 
 .weather-card.selected {
-  background: #eff6ff;
+  background: rgb(219 234 254 / 66%);
 }
 
 .card-heading {
@@ -196,7 +200,7 @@ const removeLocation = () => {
   padding: 0 2px;
   border: 0;
   background: transparent;
-  color: #94a3b8;
+  color: #64748b;
   font-size: 1.6rem;
   line-height: 1;
   cursor: pointer;
@@ -224,7 +228,8 @@ const removeLocation = () => {
 
 .favorite-button:hover,
 .favorite-button.active {
-  color: #f59e0b;
+  color: #7c3aed;
+  text-shadow: 0 0 12px rgb(124 58 237 / 42%);
 }
 
 h3 {
@@ -277,29 +282,65 @@ h3 {
 }
 
 .hot {
-  background: #ffe4e6;
-  color: #be123c;
+  background: rgb(254 215 170 / 78%);
+  color: #c2410c;
 }
 
 .cool {
-  background: #dbeafe;
-  color: #1d4ed8;
+  background: rgb(207 250 254 / 78%);
+  color: #0e7490;
 }
 
 .btn-detail {
   width: 100%;
   margin-top: auto;
   padding: 10px 14px;
-  border: 1px solid #2563eb;
+  border: 1px solid rgb(255 255 255 / 40%);
   border-radius: 8px;
-  background: #2563eb;
+  background: #4f46e5;
+  box-shadow: 0 8px 18px rgb(37 99 235 / 24%);
   color: #ffffff;
   font-weight: 700;
   cursor: pointer;
 }
 
 .btn-detail:hover {
-  background: #1d4ed8;
+  background: #4338ca;
+}
+
+.weather-card {
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--glass-surface);
+  box-shadow: 0 16px 36px rgb(30 64 175 / 12%);
+}
+
+.weather-card::before {
+  position: absolute;
+  inset: -35% 35% auto -20%;
+  height: 150px;
+  border-radius: 50%;
+  background: rgb(125 211 252 / 14%);
+  content: '';
+  pointer-events: none;
+}
+
+.card-heading,
+.location-detail,
+.temperature-row,
+.btn-detail {
+  position: relative;
+  z-index: 1;
+}
+
+.favorite-button,
+.remove-button {
+  z-index: 2;
+}
+
+.temperature {
+  letter-spacing: -0.06em;
+  text-shadow: 0 6px 20px rgb(37 99 235 / 18%);
 }
 
 </style>

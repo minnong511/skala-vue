@@ -12,6 +12,13 @@ const goHome = () => {
   <!-- 전체 화면을 중앙 정렬하기 위한 래퍼 -->
   <div class="not-found-container">
     <div class="not-found-content">
+      <img
+        class="not-found-photo"
+        src="/not-found-person.jpg"
+        alt="404 페이지 안내 이미지"
+      />
+      <small class="mascot-caption">2조의 마스코트 Kim ki hyun (제작자 아닙니다)</small>
+
       <!-- 시각적 포인트를 위한 아이콘 또는 큰 텍스트 (옵션) -->
       <div class="error-icon">☀️❓</div>
 
@@ -34,9 +41,14 @@ const goHome = () => {
   min-height: 80vh;
   background-color: #f8f9fa; /* 아주 연한 회색 배경 */
   font-family: 'Noto Sans KR', sans-serif; /* 기본 폰트 설정 (옵션) */
+  animation: not-found-screen-shake 0.85s ease-in-out 0.75s 2;
+  will-change: transform;
 }
 
 .not-found-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   background-color: #ffffff;
   padding: 50px;
@@ -45,9 +57,104 @@ const goHome = () => {
   border: 1px solid #e9ecef;
 }
 
+.not-found-photo {
+  display: block;
+  width: min(100%, 360px);
+  max-height: 420px;
+  margin-bottom: 20px;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 0 10px rgb(10 132 255 / 42%))
+    drop-shadow(0 0 24px rgb(94 92 230 / 30%));
+  animation:
+    not-found-photo-load 1.15s cubic-bezier(0.22, 1, 0.36, 1) both,
+    not-found-photo-glow 2.8s ease-in-out 1.15s infinite alternate;
+  will-change: transform, opacity, filter;
+}
+
+.mascot-caption {
+  display: block;
+  margin: -8px 0 18px;
+  color: #8e8e93;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
 .error-icon {
   font-size: 5rem; /* 아주 크게 */
   margin-bottom: 20px;
+  animation: error-icon-float 2.4s ease-in-out 1.1s infinite alternate;
+}
+
+@keyframes not-found-photo-load {
+  0% {
+    opacity: 0;
+    transform: translateY(28px) scale(0.72) rotate(-360deg);
+    filter:
+      blur(12px)
+      drop-shadow(0 0 0 rgb(10 132 255 / 0%));
+  }
+
+  65% {
+    opacity: 1;
+    transform: translateY(-6px) scale(1.03) rotate(420deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(720deg);
+  }
+}
+
+@keyframes not-found-screen-shake {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  15% {
+    transform: translate(-7px, 3px) rotate(-0.5deg);
+  }
+
+  30% {
+    transform: translate(8px, -4px) rotate(0.6deg);
+  }
+
+  45% {
+    transform: translate(-6px, -3px) rotate(-0.4deg);
+  }
+
+  60% {
+    transform: translate(6px, 4px) rotate(0.4deg);
+  }
+
+  75% {
+    transform: translate(-3px, 2px) rotate(-0.2deg);
+  }
+}
+
+@keyframes not-found-photo-glow {
+  from {
+    filter:
+      drop-shadow(0 0 10px rgb(10 132 255 / 42%))
+      drop-shadow(0 0 24px rgb(94 92 230 / 30%));
+  }
+
+  to {
+    filter:
+      drop-shadow(0 0 18px rgb(10 132 255 / 68%))
+      drop-shadow(0 0 36px rgb(255 204 0 / 42%));
+  }
+}
+
+@keyframes error-icon-float {
+  from {
+    transform: translateY(0) rotate(-4deg);
+  }
+
+  to {
+    transform: translateY(-8px) rotate(4deg);
+  }
 }
 
 h2 {
@@ -86,5 +193,13 @@ p {
 
 .home-button:active {
   transform: scale(0.98); /* 클릭 시 살짝 눌리는 효과 */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .not-found-photo,
+  .error-icon,
+  .not-found-container {
+    animation: none;
+  }
 }
 </style>

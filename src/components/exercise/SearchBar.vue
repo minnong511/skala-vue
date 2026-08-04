@@ -55,11 +55,25 @@ label {
 input {
   width: 100%;
   padding: 12px 14px;
-  border: 1px solid #cbd5e1;
+  border: 1px solid rgb(148 163 184 / 38%);
   border-radius: 10px;
   color: #1f2937;
-  background: #ffffff;
+  background: rgb(255 255 255 / 68%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 80%);
   font-size: 1rem;
+}
+
+.search-inner {
+  padding: 4px;
+}
+
+input {
+  border-radius: 14px;
+  background: rgb(255 255 255 / 68%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 90%),
+    0 10px 22px rgb(30 64 175 / 7%);
+  font-family: inherit;
 }
 
 input:focus {

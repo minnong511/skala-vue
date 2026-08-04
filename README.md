@@ -1,44 +1,31 @@
-# skala-vue
+# skala-vue : Weather DashBoard 
 
-This template should help get you started developing with Vue 3 in Vite.
+## 주요 기능 
 
-## Recommended IDE Setup
+설계 철학 : 프론트엔드는 처음이여서 SPA을 구현해보는 것을 목표로 했음, 
+그래서 최대한 요소를 분리하고, 재사용을 해야하는 것은 별도 컴포넌트로 분리했다.
+그리고 Slot을 적극적으로 활용하여서 최대한 모듈화를 이뤄내기를 목표로 했음  
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
-## Recommended Browser Setup
+## 기술 스택 
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+1. Pinia 
+state: unit, theme
+getter: unitSymbol, isDarkMode
+action: toggleUnit, toggleTheme
 
-## Customize configuration
+2. Axios 
+async, await, try/catch, Promise.allSettled
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+3. router 
+링크 연동 ... / catch-a;;
 
-## Project Setup
 
-```sh
-npm install
-```
+## 데이터 흐름 
 
-### Compile and Hot-Reload for Development
 
-```sh
-npm run dev
-```
 
-### Compile and Minify for Production
+# ------- 앞으로 더 공부해야 할 것 
 
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+1. JWT 
+2. Vue Router // 동적 라우트, 지연 로딩, Catch-all 라우트 

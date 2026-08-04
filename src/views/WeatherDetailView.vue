@@ -9,6 +9,7 @@ import {
 } from '@/services/weatherApi'
 import { useConfigStore } from '@/stores/configStore'
 import { createDebugLogger } from '@/utils/debugLogger'
+import { getWeatherTheme } from '@/utils/weatherTheme'
 
 const route = useRoute()
 const router = useRouter()
@@ -19,6 +20,12 @@ const cityData = ref(null)
 const locationInfo = ref(null)
 const isLoading = ref(false)
 const errorMessage = ref('')
+
+
+// 기현님 사진 넣는 곳 
+const weatherTheme = computed(() => {
+  return getWeatherTheme(cityData.value?.icon)
+})
 
 const readCustomLocations = () => {
   try {
@@ -103,7 +110,10 @@ const goHome = () => {
 </script>
 
 <template>
-  <div class="detail-container">
+  <div
+    class="detail-container"
+    :class="`weather-theme-${weatherTheme}`"
+  >
     <div class="page-heading">
       <div>
         <p class="eyebrow">WEATHER DETAIL</p>
@@ -157,6 +167,13 @@ const goHome = () => {
           <dd>{{ cityData.wind }}</dd>
         </div>
       </dl>
+
+      <img
+        v-if="weatherTheme === 'clear'"
+        class="sunny-weather-photo"
+        src="/sunny-person.png"
+        alt="맑은 날씨 안내 이미지"
+      />
 
       <iframe
         class="map-frame"
@@ -314,6 +331,93 @@ dd {
 
 .back-btn:hover {
   background: #1d4ed8;
+}
+
+.detail-container {
+  border-color: var(--glass-border);
+  background: var(--glass-surface);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-blur);
+}
+
+.unit-label,
+.back-btn {
+  border-color: rgb(255 255 255 / 52%);
+  background: rgb(239 246 255 / 66%);
+  box-shadow: 0 6px 14px rgb(37 99 235 / 10%);
+  backdrop-filter: blur(10px);
+}
+
+.info-card {
+  border-color: rgb(255 255 255 / 72%);
+  background: rgb(255 255 255 / 54%);
+  box-shadow: 0 12px 28px rgb(30 64 175 / 8%);
+  backdrop-filter: blur(12px);
+}
+
+.sunny-weather-photo {
+  display: block;
+  width: min(100%, 420px);
+  max-height: 360px;
+  margin: 22px auto;
+  border-radius: 18px;
+  object-fit: contain;
+  box-shadow: 0 12px 28px rgb(28 28 30 / 12%);
+}
+
+.detail-container {
+  transition: background 0.6s ease;
+}
+
+.detail-container.weather-theme-default {
+  background: rgb(241 245 249 / 82%);
+}
+
+.detail-container.weather-theme-clear {
+  background: rgb(224 242 254 / 78%);
+}
+
+.detail-container.weather-theme-clouds {
+  background: rgb(226 232 240 / 78%);
+}
+
+.detail-container.weather-theme-rain {
+  background: rgb(191 219 254 / 78%);
+}
+
+.detail-container.weather-theme-storm {
+  background: rgb(99 102 241 / 68%);
+}
+
+.detail-container.weather-theme-snow {
+  background: rgb(239 246 255 / 82%);
+}
+
+.detail-container.weather-theme-mist {
+  background: rgb(203 213 225 / 78%);
+}
+
+.detail-container {
+  border-radius: 26px;
+  background: var(--glass-surface);
+}
+
+.info-card {
+  border-radius: 20px;
+  background: var(--glass-surface);
+}
+
+dl div {
+  border: 1px solid rgb(255 255 255 / 66%);
+  background: rgb(255 255 255 / 46%);
+  box-shadow: 0 8px 18px rgb(30 64 175 / 7%);
+  backdrop-filter: blur(12px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .detail-container {
+    transition: none;
+  }
 }
 
 @media (max-width: 640px) {

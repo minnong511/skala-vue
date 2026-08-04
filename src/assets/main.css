@@ -11,13 +11,346 @@
 a,
 .green {
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
+  color: var(--glass-blue);
   transition: 0.4s;
   padding: 3px;
 }
 
 @media (hover: hover) {
   a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
+    background-color: rgb(147 197 253 / 22%);
   }
+}
+
+/* 기본 텍스트는 검은색으로 통일하고, CTA 버튼은 기존 대비를 유지합니다. */
+#app :is(
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span,
+  label,
+  strong,
+  small,
+  dt,
+  dd,
+  li,
+  code,
+  summary,
+  a
+) {
+  color: #1c1c1e;
+}
+
+#app :is(input, select, option) {
+  color: #1c1c1e;
+}
+
+#app :is(
+  .btn-detail,
+  .refresh-button,
+  .search-row button,
+  .add-button
+) {
+  color: #ffffff;
+}
+
+/* Apple 계열 시스템 색상으로 주요 UI의 색상 역할을 통일합니다. */
+#app .btn-detail,
+#app .refresh-button,
+#app .search-row button,
+#app .add-button {
+  background: #0a84ff;
+  box-shadow: 0 8px 18px rgb(10 132 255 / 20%);
+}
+
+#app .btn-detail:hover,
+#app .refresh-button:hover:not(:disabled),
+#app .search-row button:hover,
+#app .add-button:hover {
+  background: #007aff;
+}
+
+#app .favorite-button {
+  color: #8e8e93;
+}
+
+#app .favorite-button:hover,
+#app .favorite-button.active {
+  color: #ffcc00;
+  text-shadow: 0 0 12px rgb(255 204 0 / 38%);
+}
+
+#app .remove-button {
+  border-color: rgb(255 59 48 / 30%);
+  background: #fff2f1;
+  color: #ff3b30;
+}
+
+#app .remove-button:hover {
+  background: #ffe5e2;
+}
+
+#app .temperature {
+  color: #0a84ff;
+}
+
+#app .hot {
+  background: #fff4e5;
+  color: #ff9500;
+}
+
+#app .cool {
+  background: #efefff;
+  color: #5e5ce6;
+}
+
+#app .bar-track {
+  background: #e5e5ea;
+}
+
+#app .bar-fill {
+  background: #5e5ce6;
+  box-shadow: 0 0 18px rgb(94 92 230 / 28%);
+}
+
+#app .dashboard-wrapper.weather-theme-default,
+#app .detail-container.weather-theme-default {
+  background: #f5f5f7;
+}
+
+#app .dashboard-wrapper.weather-theme-clear,
+#app .detail-container.weather-theme-clear {
+  background: #d9ecff;
+}
+
+#app .dashboard-wrapper.weather-theme-clouds,
+#app .detail-container.weather-theme-clouds {
+  background: #e5e5ea;
+}
+
+#app .dashboard-wrapper.weather-theme-rain,
+#app .detail-container.weather-theme-rain {
+  background: #dde7ff;
+}
+
+#app .dashboard-wrapper.weather-theme-storm,
+#app .detail-container.weather-theme-storm {
+  background: #e4d9f5;
+}
+
+#app .dashboard-wrapper.weather-theme-snow,
+#app .detail-container.weather-theme-snow {
+  background: #f2f2f7;
+}
+
+#app .dashboard-wrapper.weather-theme-mist,
+#app .detail-container.weather-theme-mist {
+  background: #eaeaec;
+}
+
+/* Pinia theme 상태가 dark일 때 화면 전체의 표면과 글자색을 전환합니다. */
+#app .app-shell.theme-dark {
+  min-height: 100vh;
+  background: #1c1c1e;
+  color: #f5f5f7;
+}
+
+#app .app-shell.theme-dark .app-header {
+  border-bottom-color: rgb(255 255 255 / 12%);
+  background: rgb(28 28 30 / 94%);
+  box-shadow: 0 12px 36px rgb(0 0 0 / 22%);
+}
+
+#app .app-shell.theme-dark .brand-link,
+#app .app-shell.theme-dark .navigation-link,
+#app .app-shell.theme-dark a {
+  color: #f5f5f7;
+}
+
+#app .app-shell.theme-dark .brand-link,
+#app .app-shell.theme-dark .navigation-link {
+  background: transparent;
+}
+
+#app .app-shell.theme-dark .navigation-link:hover,
+#app .app-shell.theme-dark .navigation-link.router-link-exact-active {
+  border-color: #48484a;
+  background: #3a3a3c;
+  color: #0a84ff;
+}
+
+#app .app-shell.theme-dark :is(
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span,
+  label,
+  strong,
+  small,
+  dt,
+  dd,
+  li,
+  code,
+  summary,
+  a
+) {
+  color: #f5f5f7;
+}
+
+#app .app-shell.theme-dark :is(input, select, option) {
+  border-color: #48484a;
+  background: #2c2c2e;
+  color: #f5f5f7;
+}
+
+#app .app-shell.theme-dark :is(input, select)::placeholder {
+  color: #8e8e93;
+  opacity: 1;
+}
+
+#app .app-shell.theme-dark :is(
+  .base-dashboard-card,
+  .weather-card,
+  .comparison-panel,
+  .location-search-panel,
+  .forecast-panel,
+  .project-page,
+  .project-card,
+  .structure-card,
+  .detail-container,
+  .info-card,
+  .not-found-content
+) {
+  border-color: #48484a;
+  background: #2c2c2e;
+  box-shadow: 0 20px 55px rgb(0 0 0 / 20%);
+}
+
+#app .app-shell.theme-dark :is(
+  .result-item,
+  .forecast-card,
+  .chart-controls select,
+  dl div,
+  .empty-message,
+  .loading-message,
+  .api-message
+) {
+  border-color: #48484a;
+  background: #3a3a3c;
+}
+
+#app .app-shell.theme-dark .weather-status,
+#app .app-shell.theme-dark .location-detail,
+#app .app-shell.theme-dark .description,
+#app .app-shell.theme-dark dt,
+#app .app-shell.theme-dark .theme-label {
+  color: #aeaeb2;
+}
+
+#app .app-shell.theme-dark .search-row label,
+#app .app-shell.theme-dark .sort-control label,
+#app .app-shell.theme-dark .chart-controls label,
+#app .app-shell.theme-dark .comparison-summary,
+#app .app-shell.theme-dark .status-bar,
+#app .app-shell.theme-dark .status-bar small {
+  color: #d1d1d6;
+}
+
+#app .app-shell.theme-dark .unit-toggler,
+#app .app-shell.theme-dark .light-mode-control {
+  color: #f5f5f7;
+}
+
+#app .app-shell.theme-dark .unit-toggler strong {
+  color: #0a84ff;
+}
+
+#app .app-shell.theme-dark .toggle-btn {
+  border-color: #636366;
+  background: #3a3a3c;
+  color: #f5f5f7;
+}
+
+#app .app-shell.theme-dark .toggle-btn:hover {
+  background: #48484a;
+}
+
+#app .app-shell.theme-dark .theme-toggle-button {
+  border-color: #636366;
+  background: #3a3a3c;
+  color: #f5f5f7;
+}
+
+#app .app-shell.theme-dark .theme-toggle-button:hover {
+  background: #48484a;
+}
+
+#app .app-shell.theme-dark .weather-card .temperature,
+#app .app-shell.theme-dark .comparison-summary strong,
+#app .app-shell.theme-dark .chart-label span {
+  color: #64d2ff;
+}
+
+#app .app-shell.theme-dark .weather-card .hot {
+  background: #5a3a16;
+  color: #ffb340;
+}
+
+#app .app-shell.theme-dark .weather-card .cool {
+  background: #38376b;
+  color: #b5b3ff;
+}
+
+#app .app-shell.theme-dark .status-bar {
+  border-color: #2d6a4f;
+  background: #193b2d;
+}
+
+#app .app-shell.theme-dark .loading-message {
+  background: #203b5c;
+}
+
+#app .app-shell.theme-dark .api-message,
+#app .app-shell.theme-dark .forecast-message.error {
+  background: #4a2525;
+  color: #ffb4ab;
+}
+
+#app .app-shell.theme-dark .dashboard-wrapper.weather-theme-default,
+#app .app-shell.theme-dark .detail-container.weather-theme-default,
+#app .app-shell.theme-dark .dashboard-wrapper.weather-theme-clear,
+#app .app-shell.theme-dark .detail-container.weather-theme-clear,
+#app .app-shell.theme-dark .dashboard-wrapper.weather-theme-clouds,
+#app .app-shell.theme-dark .detail-container.weather-theme-clouds,
+#app .app-shell.theme-dark .dashboard-wrapper.weather-theme-rain,
+#app .app-shell.theme-dark .detail-container.weather-theme-rain,
+#app .app-shell.theme-dark .dashboard-wrapper.weather-theme-storm,
+#app .app-shell.theme-dark .detail-container.weather-theme-storm,
+#app .app-shell.theme-dark .dashboard-wrapper.weather-theme-snow,
+#app .app-shell.theme-dark .detail-container.weather-theme-snow,
+#app .app-shell.theme-dark .dashboard-wrapper.weather-theme-mist,
+#app .app-shell.theme-dark .detail-container.weather-theme-mist {
+  background: #2c2c2e;
+}
+
+/* LightMode 토글을 기준으로 상단 두 토글 버튼의 크기를 통일합니다. */
+#app .unit-toggler .toggle-btn,
+#app .light-mode-control .theme-toggle-button {
+  width: 100px;
+  min-width: 100px;
+  height: 38px;
+  padding: 8px 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  white-space: nowrap;
 }

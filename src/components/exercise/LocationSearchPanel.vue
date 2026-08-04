@@ -273,7 +273,8 @@ onBeforeUnmount(() => {
         allowfullscreen
         referrerpolicy="strict-origin-when-cross-origin"
       ></iframe>
-    </section>
+  </section>
+
   </section>
 </template>
 
@@ -545,5 +546,61 @@ h2 {
   .map-heading > p {
     text-align: left;
   }
+}
+
+.location-search-panel {
+  border-color: rgb(255 255 255 / 72%);
+  background: rgb(255 255 255 / 48%);
+  box-shadow: 0 12px 28px rgb(30 64 175 / 8%);
+  backdrop-filter: blur(14px) saturate(130%);
+}
+
+.search-row input {
+  border-color: rgb(148 163 184 / 38%);
+  background: rgb(255 255 255 / 70%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 80%);
+}
+
+.search-row button,
+.add-button {
+  border-color: rgb(255 255 255 / 42%);
+  background: #4f46e5;
+  box-shadow: 0 8px 16px rgb(37 99 235 / 18%);
+}
+
+.result-item {
+  border-color: rgb(255 255 255 / 74%);
+  background: rgb(255 255 255 / 58%);
+  box-shadow: 0 8px 20px rgb(30 64 175 / 7%);
+  backdrop-filter: blur(12px);
+}
+
+.city-tabs button {
+  border-color: rgb(147 197 253 / 54%);
+  background: rgb(239 246 255 / 64%);
+}
+
+.location-search-panel {
+  border-radius: 22px;
+  background: var(--glass-surface);
+  box-shadow: 0 16px 34px rgb(30 64 175 / 10%);
+}
+
+.search-row input {
+  border-radius: 14px;
+  background: rgb(255 255 255 / 68%);
+  font-family: inherit;
+}
+
+.search-row button,
+.add-button {
+  border-radius: 14px;
+  background: #4f46e5;
+  box-shadow: 0 10px 22px rgb(37 99 235 / 20%);
+}
+
+.result-item {
+  border-radius: 16px;
+  background: rgb(255 255 255 / 54%);
 }
 </style>

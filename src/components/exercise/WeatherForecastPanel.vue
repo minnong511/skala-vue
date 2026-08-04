@@ -1,8 +1,86 @@
+<!--
+WeatherParent.vue
+   ↓ props 전달
+WeatherForecastPanel.vue
+   ↓
+도시 이름, 로딩 상태, 오류, 5일 예보 카드 출력
+
+
+1. 부모에게서 props를 받음
+2. 섭씨/화씨에 맞게 온도를 변환
+3. 예보 데이터를 화면용 데이터로 가공
+4. 로딩, 오류, 정상 데이터, 빈 상태를 구분해서 출력
+5. 예보 데이터를 반복하여 카드로 표시
+
+-->
+
 <script setup>
 import { computed, watch } from 'vue'
 
 import { useConfigStore } from '@/stores/configStore'
+// ConfigStore.unit, ConfigStore.unitSymbol -> 예상 형태
+// Pinia에서 전역변수 써서 설정 정보를 가져온다.
+// 'celsius' 또는 'fahrenheit'
+// '℃' 또는 '℉' -> 이걸로 보여준다.
+
+
 import { createDebugLogger } from '@/utils/debugLogger'
+// 디버깅 로그를 출력하기 위한 사용자 정의 함수
+
+// 현재 컴포넌트 내부에서 사용할 자식 컴포넌트를 가져온다.
+
+
+
+
+
+// Initial 세팅
+// props.city         // null
+// props.forecasts    // []
+// props.isLoading    // false
+// props.errorMessage // ''
+// defineProps는 부모 컴포넌트가 자식 컴포넌트에게 전달한 데이터를 받는 기능
+
+// 예시
+// city: {
+//   type: Object,
+//   default: null,
+// },
+// -->
+// {
+//   id: 'seoul',
+//   name: '서울',
+//   lat: 37.5665,
+//   lon: 126.978,
+// }
+
+// forecasts: {
+//   type: Array,
+//   default: () => [],
+// },
+// [
+//   {
+//     id: '2026-08-04',
+//     date: '2026-08-04',
+//     dateLabel: '8월 4일',
+//     status: '맑음',
+//     tempMin: 24,
+//     tempMax: 31,
+//     humidity: 65,
+//   },
+// ]
+
+// isLoading: {
+//   type: Boolean,
+//   default: false,
+// },
+// true  → API 요청 중
+// false → API 요청 중 아님
+
+// errorMessage: {
+//   type: String,
+//   default: '',
+// },
+// '5일 예보를 불러오지 못했습니다.'
 
 const props = defineProps({
   city: {
@@ -22,10 +100,15 @@ const props = defineProps({
     default: '',
   },
 })
+// 자식에서는 이름을 맘대로 지어서 받을 수도 있다.
 
+
+// 불러온 함수 지정하기
 const configStore = useConfigStore()
 const logger = createDebugLogger('WeatherForecastPanel')
 
+
+// 온도를 화면에 표시하기 전에 섭씨 또는 화씨로 변환하는 함수
 const displayTemp = (temperature) => {
   if (configStore.unit === 'fahrenheit') {
     return Math.round((temperature * 9) / 5 + 32)
@@ -34,6 +117,7 @@ const displayTemp = (temperature) => {
   return temperature
 }
 
+// 
 const displayForecasts = computed(() => {
   return props.forecasts.map((forecast) => ({
     ...forecast,
@@ -65,6 +149,8 @@ watch(
 
 <template>
   <section class="forecast-panel">
+
+    <!-- props.city가 있으면 도시 이름을 표시하고, 없으면 기본 문구를 표시 -->
     <div class="panel-heading">
       <div>
         <p class="eyebrow">5-DAY FORECAST</p>
@@ -77,6 +163,7 @@ watch(
       </p>
     </div>
 
+    <!-- isLoading이 true면 로딩 문구를 표시-->
     <p
       v-if="props.isLoading"
       class="forecast-message loading"
@@ -84,6 +171,7 @@ watch(
       Axios로 5일 예보를 불러오는 중입니다...
     </p>
 
+    <!-- isLoading이 true면 로딩 문구를 표시 -->
     <p
       v-else-if="props.errorMessage"
       class="forecast-message error"
@@ -118,8 +206,12 @@ watch(
     >
       표시할 5일 예보가 없습니다.
     </p>
+
   </section>
+
 </template>
+
+<!-- CSS는 일단 패스!-->
 
 <style scoped>
 .forecast-panel {
@@ -237,6 +329,36 @@ h2 {
   .forecast-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+}
+
+.forecast-card {
+  border-color: rgb(255 255 255 / 72%);
+  background: rgb(255 255 255 / 54%);
+  box-shadow: 0 8px 18px rgb(30 64 175 / 7%);
+  backdrop-filter: blur(12px);
+}
+
+.forecast-message {
+  background: rgb(255 255 255 / 48%);
+  backdrop-filter: blur(10px);
+}
+
+.forecast-message.loading {
+  background: rgb(219 234 254 / 58%);
+}
+
+.forecast-message.error {
+  background: rgb(255 237 213 / 64%);
+}
+
+.forecast-panel {
+  border-top-color: rgb(255 255 255 / 64%);
+}
+
+.forecast-card {
+  border-radius: 18px;
+  background: var(--glass-surface);
+  box-shadow: 0 12px 26px rgb(30 64 175 / 8%);
 }
 
 @media (max-width: 640px) {
