@@ -790,4 +790,59 @@ pre {
     margin-bottom: 8px;
   }
 }
+
+.project-page {
+  border-color: var(--glass-border);
+  background: var(--glass-surface);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-blur);
+}
+
+.project-card {
+  border-color: rgb(255 255 255 / 72%);
+  background: rgb(255 255 255 / 46%);
+  box-shadow: 0 10px 24px rgb(30 64 175 / 7%);
+  backdrop-filter: blur(12px);
+}
+
+.structure-card {
+  border-color: rgb(147 197 253 / 62%);
+  background: rgb(239 246 255 / 52%);
+}
+
+.project-card.expanded {
+  border-color: rgb(96 165 250 / 78%);
+  box-shadow: 0 16px 32px rgb(37 99 235 / 14%);
+}
+
+.project-card-content {
+  background: rgb(255 255 255 / 42%);
+  backdrop-filter: blur(10px);
+}
+
+pre {
+  border-color: rgb(147 197 253 / 28%);
+  background: rgb(15 23 42 / 88%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 10%);
+}
+
+.project-page {
+  border-radius: 26px;
+  background:
+    linear-gradient(145deg, rgb(255 255 255 / 64%), rgb(255 255 255 / 32%)),
+    var(--glass-surface);
+}
+
+.project-card {
+  border-radius: 18px;
+  background:
+    linear-gradient(145deg, rgb(255 255 255 / 62%), rgb(255 255 255 / 28%)),
+    var(--glass-surface);
+}
+
+.structure-card {
+  background:
+    linear-gradient(145deg, rgb(219 234 254 / 64%), rgb(224 231 255 / 34%)),
+    var(--glass-surface);
+}
 </style>

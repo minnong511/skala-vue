@@ -4,8 +4,6 @@ import { computed, ref, watch } from 'vue'
 import { useConfigStore } from '@/stores/configStore'
 import { createDebugLogger } from '@/utils/debugLogger'
 
-import PanelInfo from './PanelInfo.vue'
-
 const props = defineProps({
   cities: {
     type: Array,
@@ -158,18 +156,6 @@ const highestCity = computed(() => chartRows.value[0] ?? null)
       }}
     </p>
 
-    <PanelInfo
-      :directives="[
-        { name: 'v-model', description: 'select와 metric 상태를 연결해 비교 기준을 바꿉니다.' },
-        { name: 'v-if / v-else', description: '도시 수와 데이터 유무에 따라 요약·차트·빈 상태를 보여줍니다.' },
-        { name: 'v-for + :key', description: '도시별 비교 행을 반복하고 metric·도시 조합으로 식별합니다.' },
-        { name: 'v-bind (:cities, :style)', description: '부모의 도시 목록과 막대 너비를 컴포넌트·스타일에 전달합니다.' },
-      ]"
-      :components="[
-        { name: 'WeatherComparisonChart', description: '도시별 기온·습도·풍속 비교를 그리는 현재 패널입니다.' },
-        { name: 'WeatherParent', description: 'filteredWeatherList를 cities prop으로 전달하는 부모입니다.' },
-      ]"
-    />
   </section>
 </template>
 
@@ -333,5 +319,35 @@ h2 {
   .chart-label {
     font-size: 0.9rem;
   }
+}
+
+.comparison-panel {
+  border-color: var(--glass-border);
+  background: var(--glass-surface-strong);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-blur);
+}
+
+.chart-controls select {
+  border-color: rgb(148 163 184 / 38%);
+  background: rgb(255 255 255 / 68%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 80%);
+}
+
+.bar-track {
+  background: rgb(226 232 240 / 62%);
+  box-shadow: inset 0 1px 3px rgb(30 64 175 / 8%);
+}
+
+.comparison-panel {
+  border-radius: 24px;
+  background:
+    linear-gradient(145deg, rgb(255 255 255 / 70%), rgb(255 255 255 / 36%)),
+    var(--glass-surface-strong);
+}
+
+.bar-fill {
+  background: linear-gradient(90deg, #06b6d4, #3b82f6 54%, #6366f1);
+  box-shadow: 0 0 18px rgb(59 130 246 / 38%);
 }
 </style>

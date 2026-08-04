@@ -11,13 +11,49 @@
 a,
 .green {
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
+  color: var(--glass-blue);
   transition: 0.4s;
   padding: 3px;
 }
 
 @media (hover: hover) {
   a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
+    background-color: rgb(147 197 253 / 22%);
   }
+}
+
+/* 기본 텍스트는 검은색으로 통일하고, CTA 버튼은 기존 대비를 유지합니다. */
+#app :is(
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span,
+  label,
+  strong,
+  small,
+  dt,
+  dd,
+  li,
+  code,
+  summary,
+  a
+) {
+  color: #000000;
+}
+
+#app :is(input, select, option) {
+  color: #000000;
+}
+
+#app :is(
+  .btn-detail,
+  .refresh-button,
+  .search-row button,
+  .add-button
+) {
+  color: #ffffff;
 }

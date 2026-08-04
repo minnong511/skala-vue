@@ -9,6 +9,7 @@ import {
 } from '@/services/weatherApi'
 import { useConfigStore } from '@/stores/configStore'
 import { createDebugLogger } from '@/utils/debugLogger'
+import { getWeatherTheme } from '@/utils/weatherTheme'
 
 const route = useRoute()
 const router = useRouter()
@@ -19,6 +20,10 @@ const cityData = ref(null)
 const locationInfo = ref(null)
 const isLoading = ref(false)
 const errorMessage = ref('')
+
+const weatherTheme = computed(() => {
+  return getWeatherTheme(cityData.value?.icon)
+})
 
 const readCustomLocations = () => {
   try {
@@ -103,7 +108,10 @@ const goHome = () => {
 </script>
 
 <template>
-  <div class="detail-container">
+  <div
+    class="detail-container"
+    :class="`weather-theme-${weatherTheme}`"
+  >
     <div class="page-heading">
       <div>
         <p class="eyebrow">WEATHER DETAIL</p>
@@ -314,6 +322,107 @@ dd {
 
 .back-btn:hover {
   background: #1d4ed8;
+}
+
+.detail-container {
+  border-color: var(--glass-border);
+  background: var(--glass-surface);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-blur);
+}
+
+.unit-label,
+.back-btn {
+  border-color: rgb(255 255 255 / 52%);
+  background: rgb(239 246 255 / 66%);
+  box-shadow: 0 6px 14px rgb(37 99 235 / 10%);
+  backdrop-filter: blur(10px);
+}
+
+.info-card {
+  border-color: rgb(255 255 255 / 72%);
+  background: rgb(255 255 255 / 54%);
+  box-shadow: 0 12px 28px rgb(30 64 175 / 8%);
+  backdrop-filter: blur(12px);
+}
+
+.detail-container {
+  transition: background 0.6s ease;
+}
+
+.detail-container.weather-theme-default {
+  background:
+    linear-gradient(135deg, rgb(238 246 255 / 54%), rgb(244 240 255 / 54%)),
+    var(--glass-surface);
+}
+
+.detail-container.weather-theme-clear {
+  background:
+    radial-gradient(circle at 86% 4%, rgb(250 204 21 / 34%), transparent 30%),
+    linear-gradient(135deg, rgb(186 230 253 / 70%), rgb(239 246 255 / 54%) 58%),
+    var(--glass-surface);
+}
+
+.detail-container.weather-theme-clouds {
+  background:
+    radial-gradient(circle at 18% 8%, rgb(226 232 240 / 66%), transparent 34%),
+    linear-gradient(135deg, rgb(203 213 225 / 70%), rgb(239 246 255 / 56%) 58%),
+    var(--glass-surface);
+}
+
+.detail-container.weather-theme-rain {
+  background:
+    radial-gradient(circle at 84% 10%, rgb(96 165 250 / 28%), transparent 30%),
+    linear-gradient(135deg, rgb(147 197 253 / 70%), rgb(30 64 175 / 18%) 55%),
+    var(--glass-surface);
+}
+
+.detail-container.weather-theme-storm {
+  background:
+    radial-gradient(circle at 78% 4%, rgb(129 140 248 / 36%), transparent 28%),
+    linear-gradient(135deg, rgb(49 46 129 / 70%), rgb(67 56 202 / 42%) 58%),
+    var(--glass-surface);
+}
+
+.detail-container.weather-theme-snow {
+  background:
+    radial-gradient(circle at 16% 6%, rgb(255 255 255 / 74%), transparent 28%),
+    linear-gradient(135deg, rgb(224 242 254 / 76%), rgb(237 233 254 / 68%) 58%),
+    var(--glass-surface);
+}
+
+.detail-container.weather-theme-mist {
+  background:
+    radial-gradient(circle at 72% 8%, rgb(203 213 225 / 52%), transparent 32%),
+    linear-gradient(135deg, rgb(203 213 225 / 70%), rgb(226 232 240 / 62%) 58%),
+    var(--glass-surface);
+}
+
+.detail-container {
+  border-radius: 26px;
+  background:
+    linear-gradient(145deg, rgb(255 255 255 / 66%), rgb(255 255 255 / 34%)),
+    var(--glass-surface);
+}
+
+.info-card {
+  border-radius: 20px;
+  background:
+    linear-gradient(145deg, rgb(255 255 255 / 68%), rgb(255 255 255 / 34%)),
+    var(--glass-surface);
+}
+
+dl div {
+  border: 1px solid rgb(255 255 255 / 66%);
+  background: rgb(255 255 255 / 46%);
+  box-shadow: 0 8px 18px rgb(30 64 175 / 7%);
+  backdrop-filter: blur(12px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .detail-container {
+    transition: none;
+  }
 }
 
 @media (max-width: 640px) {

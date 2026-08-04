@@ -5,8 +5,6 @@ import { searchLocations } from '@/services/locationApi'
 import { getGoogleMapsEmbedUrl } from '@/services/weatherApi'
 import { createDebugLogger } from '@/utils/debugLogger'
 
-import PanelInfo from './PanelInfo.vue'
-
 const props = defineProps({
   locations: {
     type: Array,
@@ -277,18 +275,6 @@ onBeforeUnmount(() => {
       ></iframe>
   </section>
 
-    <PanelInfo
-      :directives="[
-        { name: 'v-model', description: '주소 검색 input과 query 상태를 양방향으로 연결합니다.' },
-        { name: 'v-if', description: '검색 오류, 검색 결과, 선택 지도처럼 조건에 따라 화면을 렌더링합니다.' },
-        { name: 'v-for + :key', description: '검색 결과와 지역 탭을 반복하고 각 항목을 식별합니다.' },
-        { name: 'v-bind (:) + v-on (@)', description: '지도 URL·선택 상태를 바인딩하고 클릭·submit 이벤트를 처리합니다.' },
-      ]"
-      :components="[
-        { name: 'LocationSearchPanel', description: '주소 검색과 지도 표시를 담당하는 현재 패널입니다.' },
-        { name: 'BaseDashboardCard', description: '패널을 감싸는 공통 대시보드 카드입니다.' },
-      ]"
-    />
   </section>
 </template>
 
@@ -560,5 +546,63 @@ h2 {
   .map-heading > p {
     text-align: left;
   }
+}
+
+.location-search-panel {
+  border-color: rgb(255 255 255 / 72%);
+  background: rgb(255 255 255 / 48%);
+  box-shadow: 0 12px 28px rgb(30 64 175 / 8%);
+  backdrop-filter: blur(14px) saturate(130%);
+}
+
+.search-row input {
+  border-color: rgb(148 163 184 / 38%);
+  background: rgb(255 255 255 / 70%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 80%);
+}
+
+.search-row button,
+.add-button {
+  border-color: rgb(255 255 255 / 42%);
+  background: linear-gradient(135deg, #3b82f6, #4f46e5);
+  box-shadow: 0 8px 16px rgb(37 99 235 / 18%);
+}
+
+.result-item {
+  border-color: rgb(255 255 255 / 74%);
+  background: rgb(255 255 255 / 58%);
+  box-shadow: 0 8px 20px rgb(30 64 175 / 7%);
+  backdrop-filter: blur(12px);
+}
+
+.city-tabs button {
+  border-color: rgb(147 197 253 / 54%);
+  background: rgb(239 246 255 / 64%);
+}
+
+.location-search-panel {
+  border-radius: 22px;
+  background:
+    linear-gradient(145deg, rgb(255 255 255 / 70%), rgb(255 255 255 / 32%)),
+    var(--glass-surface);
+  box-shadow: 0 16px 34px rgb(30 64 175 / 10%);
+}
+
+.search-row input {
+  border-radius: 14px;
+  background: rgb(255 255 255 / 68%);
+  font-family: inherit;
+}
+
+.search-row button,
+.add-button {
+  border-radius: 14px;
+  background: linear-gradient(135deg, #2563eb, #6366f1 60%, #06b6d4);
+  box-shadow: 0 10px 22px rgb(37 99 235 / 20%);
+}
+
+.result-item {
+  border-radius: 16px;
+  background: rgb(255 255 255 / 54%);
 }
 </style>

@@ -57,4 +57,21 @@ const toggleUnit = () => {
 .toggle-btn:hover {
   background: #dbeafe;
 }
+
+.toggle-btn {
+  border-color: rgb(255 255 255 / 52%);
+  background: rgb(239 246 255 / 68%);
+  box-shadow: 0 6px 14px rgb(37 99 235 / 12%);
+  backdrop-filter: blur(10px);
+}
+
+.toggle-btn:hover {
+  background: rgb(219 234 254 / 78%);
+}
+
+.toggle-btn {
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgb(239 246 255 / 78%), rgb(224 231 255 / 74%));
+  font-family: inherit;
+}
 </style>

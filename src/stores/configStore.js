@@ -3,6 +3,9 @@ import { defineStore } from 'pinia'
 
 import { createDebugLogger } from '@/utils/debugLogger'
 
+
+// Convention이 있다. 
+
 export const useConfigStore = defineStore('config', () => {
   // 1. state: 단위를 저장하는 변수 (초기값은 'celsius')
   // 값은 오직 'celsius' 또는 'fahrenheit' 두 가지만 가집니다.

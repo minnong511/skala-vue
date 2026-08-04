@@ -1,15 +1,65 @@
-import axios from 'axios'
+// axios로 API 불러오고 데이터 처리하는 지점
+// WeatherParent.vue
+//         |
+//         | fetchWeatherList()
+//         | fetchFiveDayForecast()
+//         ↓
+// weatherApi.js  ← 지금 보는 파일
+//         |
+//         | axios GET 요청
+//         ↓
+// OpenWeather API
+//         |
+//         ↓
+// 날씨 JSON 데이터
+//         |
+//         ↓
+// normalize 함수로 우리 서비스 형태로 변환
+
+
+
+import axios from 'axios' // axios 불러오기, HTTP 요청 라이브러리
+
+// JavaScript
+//    |
+//    | axios.get()
+//    |
+// 인터넷
+//    |
+// OpenWeather 서버
 
 import { createDebugLogger } from '@/utils/debugLogger'
 
+// 로그 시스템
+
 const logger = createDebugLogger('weatherApi')
 
+// 파일 전용 logger 생성
+
+
+// 정보를 불러올 API 주소를 저장한다. 서울 현재 날씨를 반환한다.
 const OPEN_WEATHER_URL =
   'https://api.openweathermap.org/data/2.5/weather'
+// 현재 예보
 const OPEN_WEATHER_FORECAST_URL =
   'https://api.openweathermap.org/data/2.5/forecast'
+// 5일 예보이다.
+
+// API 키값. 온라인에 노출되면 안된다.
+// VITE가 빌드할 때 알아서 가져온다.
 const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
 const OPEN_WEATHER_API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY
+
+
+
+
+// 일단 기본주소를 저장한다.
+// Openweather API : lat, lon을 입력으로 받는다.
+// 서울
+//  ↓
+// 위도/경도 변환
+//  ↓
+// API 요청
 
 export const WEATHER_LOCATIONS = [
   {
@@ -44,6 +94,9 @@ export const WEATHER_LOCATIONS = [
   },
 ]
 
+// resolveLocation 함수
+// I가 들어왔는지 확인하는 객체가 들어왔는지 확인하는 객체
+
 const resolveLocation = (locationOrId, additionalLocations = []) => {
   if (typeof locationOrId === 'object' && locationOrId !== null) {
     return locationOrId
@@ -53,6 +106,9 @@ const resolveLocation = (locationOrId, additionalLocations = []) => {
     (location) => location.id === locationOrId,
   )
 }
+
+// Google Map URL 생성
+// 객체 ->  lat, lon -> URL 생성
 
 export const getGoogleMapsEmbedUrl = (
   locationOrId,
@@ -67,6 +123,9 @@ export const getGoogleMapsEmbedUrl = (
   const query = encodeURIComponent(`${location.lat},${location.lon}`)
   return `https://www.google.com/maps/embed/v1/place?key=${GOOGLE_MAPS_API_KEY}&q=${query}&zoom=12`
 }
+
+
+// normalize 
 
 const normalizeWeatherData = (location, data) => {
   return {

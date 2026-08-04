@@ -1,3 +1,5 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
   --vt-c-white: #ffffff;
@@ -28,6 +30,16 @@
   --color-text: var(--vt-c-text-light-1);
 
   --section-gap: 160px;
+
+  --glass-surface: rgb(255 255 255 / 54%);
+  --glass-surface-strong: rgb(255 255 255 / 72%);
+  --glass-border: rgb(255 255 255 / 78%);
+  --glass-shadow: 0 20px 55px rgb(30 64 175 / 15%);
+  --glass-blur: blur(22px) saturate(145%);
+  --glass-blue: #2563eb;
+  --glass-cyan: #06b6d4;
+  --glass-violet: #6366f1;
+  --glass-ink: #172554;
 }
 
 *,
@@ -41,9 +53,16 @@
 body {
   min-height: 100vh;
   color: var(--color-text);
-  background: var(--color-background);
+  background:
+    radial-gradient(circle at 8% 0%, rgb(125 211 252 / 48%), transparent 30%),
+    radial-gradient(circle at 92% 12%, rgb(196 181 253 / 42%), transparent 34%),
+    radial-gradient(circle at 52% 100%, rgb(186 230 253 / 40%), transparent 36%),
+    linear-gradient(135deg, #dbeafe 0%, #f8fbff 46%, #ede9fe 100%);
+  background-attachment: fixed;
+  background-size: 140% 140%;
   line-height: 1.6;
   font-family:
+    Pretendard,
     Inter,
     -apple-system,
     BlinkMacSystemFont,

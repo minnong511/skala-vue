@@ -38,8 +38,13 @@ import UnitToggler from './components/exercise/UnitToggler.vue'
 
 <style scoped>
 .app-header {
-  border-bottom: 1px solid #dbe4f0;
-  background: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid rgb(255 255 255 / 72%);
+  background: rgb(255 255 255 / 58%);
+  box-shadow: 0 10px 30px rgb(30 64 175 / 8%);
+  backdrop-filter: blur(18px) saturate(135%);
 }
 
 .app-header-inner {
@@ -62,7 +67,7 @@ import UnitToggler from './components/exercise/UnitToggler.vue'
 .navigation-link {
   padding: 6px 8px;
   border-radius: 6px;
-  color: #334155;
+  color: #1e293b;
   text-decoration: none;
 }
 
@@ -74,7 +79,7 @@ import UnitToggler from './components/exercise/UnitToggler.vue'
 
 .navigation-link:hover,
 .navigation-link.router-link-exact-active {
-  background: #eff6ff;
+  background: rgb(219 234 254 / 72%);
   color: #1d4ed8;
 }
 
@@ -97,6 +102,52 @@ import UnitToggler from './components/exercise/UnitToggler.vue'
 
   .app-main {
     padding: 16px;
+  }
+}
+
+.app-header {
+  border-bottom-color: rgb(255 255 255 / 64%);
+  background: rgb(248 250 252 / 44%);
+  box-shadow: 0 12px 36px rgb(30 64 175 / 10%);
+  backdrop-filter: blur(24px) saturate(150%);
+}
+
+.app-header-inner {
+  max-width: 1480px;
+}
+
+.navigation-bar {
+  gap: 10px;
+}
+
+.brand-link,
+.navigation-link {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.brand-link {
+  color: #1e3a8a;
+  letter-spacing: -0.03em;
+}
+
+.navigation-link:hover,
+.navigation-link.router-link-exact-active {
+  border-color: rgb(255 255 255 / 72%);
+  background: rgb(255 255 255 / 48%);
+  box-shadow: 0 8px 18px rgb(37 99 235 / 10%);
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-link,
+  .navigation-link {
+    transition: none;
   }
 }
 </style>
