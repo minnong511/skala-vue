@@ -673,3 +673,34 @@ body:has(#app .app-shell.theme-dark) {
 #app .app-shell.theme-dark .detail-container.weather-theme-mist {
   background: #202022;
 }
+
+/* 날씨 카드의 장식 원은 다크 모드에서 푸른색이 튀지 않도록 중립색으로 낮춥니다. */
+#app .app-shell.theme-dark .weather-card {
+  border-color: #3a3a3c;
+  background: #202124;
+}
+
+#app .app-shell.theme-dark .weather-card.selected {
+  border-color: #64d2ff;
+  background: #252a31;
+}
+
+#app .app-shell.theme-dark .weather-card::before {
+  background: rgb(255 255 255 / 4%);
+}
+
+/* 비교 그래프의 각 행은 큰 회색 박스 대신 패널 안에서 자연스럽게 이어지게 합니다. */
+#app .app-shell.theme-dark .chart-row {
+  border: 0;
+  background: transparent;
+}
+
+#app .app-shell.theme-dark .chart-controls {
+  border: 1px solid #3a3a3c;
+  border-radius: 12px;
+  background: #202124;
+}
+
+#app .app-shell.theme-dark .bar-track {
+  background: #3a3a3c;
+}
