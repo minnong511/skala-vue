@@ -243,8 +243,8 @@ flowchart LR
 | `src/main.js` | Vue 앱, Pinia, Vue Router, Element Plus를 등록하고 앱을 시작합니다. |
 | `src/utils/weatherTheme.js` | 날씨 아이콘을 기준으로 화면 테마를 계산합니다. |
 | `src/utils/debugLogger.js` | API 요청, 상태 변화, 사용자 행동을 확인하기 위한 로그를 관리합니다. |
-| `src/components/exercise/LightMode.vue` | Pinia의 테마 상태를 이용해 라이트·다크 모드를 전환합니다. |
-| `src/components/exercise/UnitToggler.vue` | Pinia의 온도 단위를 섭씨·화씨로 전환합니다. |
+| `src/components/exercise/LightMode.vue` | Pinia의 테마 상태를 이용해 라이트, 다크 모드를 전환합니다. |
+| `src/components/exercise/UnitToggler.vue` | Pinia의 온도 단위를 섭씨, 화씨로 전환합니다. |
 | `src/views/ProjectView.vue` | 프로젝트 구조, 변수, 컴포넌트 통신 과정을 아코디언 형태로 설명합니다. |
 | `src/views/NotFoundView.vue` | 등록되지 않은 경로에서 404 안내 화면을 표시합니다. |
 | `.env.example` | OpenWeather와 Google Maps API 키의 환경변수 이름을 안내합니다. |
