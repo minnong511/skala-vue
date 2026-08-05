@@ -117,7 +117,7 @@ Axios를 사용해서 OpenWeather API에 좌표를 보내고 날씨 데이터를
 ### 9. 배포
 
 github에 올리고, Vercel에 배포했습니다.
-마지막으로 API 키는 Vercel 환경변수로 분리해서 저장소에 직접 노출되지 않게 했습니다. (VITE 환경변수는 브라우저에서 사용되기 때문에 배포 후 완전한 비밀키는 아닙니다.)
+마지막으로 API 키는 Vercel 환경변수로 분리해서 저장소에 직접 노출되지 않게 했습니다!
 
 [날씨 대시보드 바로가기](https://skala-vue-theta.vercel.app/)
 
