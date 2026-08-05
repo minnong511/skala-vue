@@ -253,7 +253,6 @@ flowchart LR
 ### 6. 페이지 라우팅 구조 
 
 ```mermaid
-```mermaid
 flowchart TD
     ROUTER["src/router/index.js"]
 
