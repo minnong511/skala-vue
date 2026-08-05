@@ -229,8 +229,8 @@ flowchart TD
 flowchart LR
     COMMON[공통 UI 규칙]
     COMMON --> BASE[BaseDashboardCard.vue]
-    BASE --> SEARCH_CARD[검색·지역 추가 카드]
-    BASE --> WEATHER_CARD[날씨 현황·비교·예보 카드]
+    BASE --> SEARCH_CARD[검색, 지역 추가 카드]
+    BASE --> WEATHER_CARD[날씨 현황, 비교, 예보 카드]
     BASE --> REUSE[같은 카드 스타일 재사용]
 ```
 
