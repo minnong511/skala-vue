@@ -1,9 +1,9 @@
-<script>
+<script setup>
 // 걍 연습용임 
 import {reactive} from 'vue'
 
-const userReaactive =reactive({name:'이순신', age:30})
-const celebrateReactive = () => {userReactive..age++}
+const userReactive = reactive({name:'이순신', age:30})
+const celebrateReactive = () => {userReactive.age++}
 
 const items = reactive([
   {id:1, name:'사과', price:1000},
