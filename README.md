@@ -10,6 +10,19 @@ SKALA Frontend
 
 중점으로 SPA를 구현하는 것을 목표로 하여 구현했습니다!
 
+!--  ESlint 검사 완료 --!
+
+```bash
+npm notice run skala-vue@0.0.0 lint
+npm notice run run-s "lint:*"
+npm notice run skala-vue@0.0.0 lint:oxlint
+npm notice run oxlint . --fix
+Found 0 warnings and 0 errors.
+Finished in 20ms on 38 files with 114 rules using 10 threads.
+npm notice run skala-vue@0.0.0 lint:eslint
+npm notice run eslint . --fix --cache
+```
+
 ## 배포 링크
 
 [날씨 대시보드 바로가기](https://skala-vue-theta.vercel.app/)
