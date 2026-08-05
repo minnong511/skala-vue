@@ -253,23 +253,24 @@ flowchart LR
 ### 6. 페이지 라우팅 구조 
 
 ```mermaid
+```mermaid
 flowchart TD
-    ROUTER[src/router/index.js]
-    ROUTER --> HOME[/]
-    ROUTER --> ABOUT[/about]
-    ROUTER --> PRACTICE[/practice]
-    ROUTER --> PROJECT[/project]
-    ROUTER --> DETAIL[/weather/:cityId]
-    ROUTER --> NOT_FOUND[등록되지 않은 모든 경로]
+    ROUTER["src/router/index.js"]
 
-    HOME --> WEATHER_HOME[WeatherHomeView.vue]
-    ABOUT --> WEATHER_ABOUT[WeatherAboutView.vue]
-    PRACTICE --> PRACTICE_VIEW[PracticeView.vue]
-    PROJECT --> PROJECT_VIEW[ProjectView.vue]
-    DETAIL --> DETAIL_VIEW[WeatherDetailView.vue]
-    NOT_FOUND --> NOT_FOUND_VIEW[NotFoundView.vue]
+    ROUTER --> HOME["/"]
+    ROUTER --> ABOUT["/about"]
+    ROUTER --> PRACTICE["/practice"]
+    ROUTER --> PROJECT["/project"]
+    ROUTER --> DETAIL["/weather/:cityId"]
+    ROUTER --> NOT_FOUND["/:pathMatch(.*)*"]
+
+    HOME --> WEATHER_HOME["WeatherHomeView.vue"]
+    ABOUT --> WEATHER_ABOUT["WeatherAboutView.vue"]
+    PRACTICE --> PRACTICE_VIEW["PracticeView.vue"]
+    PROJECT --> PROJECT_VIEW["ProjectView.vue"]
+    DETAIL --> DETAIL_VIEW["WeatherDetailView.vue"]
+    NOT_FOUND --> NOT_FOUND_VIEW["NotFoundView.vue"]
 ```
-
 
 이와 같은 연습을 통해서 SPA(Single Page Application)을 구현할 수 있었습니다. 
 
