@@ -11,8 +11,8 @@ const props = defineProps({
 const emit = defineEmits(['update-query'])
 const logger = createDebugLogger('SearchBar')
 
-const handleInput = (event) => {
-  const query = event.target.value
+const handleInput = (value) => {
+  const query = typeof value === 'string' ? value : value.target.value
 
   logger.input('도시 검색어 변경', {
     query,
@@ -25,13 +25,15 @@ const handleInput = (event) => {
 <template>
   <div class="search-inner">
     <label for="city-search">🔍 도시 검색</label>
-    <input
+    <el-input
       id="city-search"
       type="search"
-      :value="props.currentQuery"
+      :model-value="props.currentQuery"
       placeholder="검색할 도시 이름 입력"
       @input="handleInput"
-    />
+    >
+      <template #prefix>🔍</template>
+    </el-input>
     <p>
       검색 중인 도시:
       <strong>{{ props.currentQuery || '전체 도시' }}</strong>

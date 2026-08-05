@@ -804,21 +804,25 @@ dashboard-wrapper
 
       <div class="location-actions">
         <span>추가 지역 {{ customLocations.length }}개</span>
-        <button
-          type="button"
+        <el-button
+          type="danger"
+          plain
+          round
           :disabled="customLocations.length === 0"
           @click="resetCustomLocations"
         >
           추가 지역 초기화
-        </button>
+        </el-button>
       </div>
 
-      <p
+      <el-alert
         v-if="locationErrorMessage"
         class="location-message"
-      >
-        {{ locationErrorMessage }}
-      </p>
+        :title="locationErrorMessage"
+        type="info"
+        :closable="false"
+        show-icon
+      />
 
     </BaseDashboardCard>
 
@@ -847,21 +851,26 @@ dashboard-wrapper
           <div class="weather-toolbar">
             <label class="sort-control">
               기온순 정렬
-              <select v-model="sortMode">
-                <option value="default">기본 순서</option>
-                <option value="temp-desc">높은 기온순</option>
-                <option value="temp-asc">낮은 기온순</option>
-              </select>
+              <el-select
+                v-model="sortMode"
+                aria-label="기온순 정렬"
+              >
+                <el-option label="기본 순서" value="default" />
+                <el-option label="높은 기온순" value="temp-desc" />
+                <el-option label="낮은 기온순" value="temp-asc" />
+              </el-select>
             </label>
 
-            <button
-              type="button"
+            <el-button
+              type="primary"
+              round
               class="refresh-button"
               :disabled="isLoading"
+              :loading="isLoading"
               @click="loadWeatherList"
             >
-              {{ isLoading ? '불러오는 중...' : '↻ 날씨 새로고침' }}
-            </button>
+              날씨 새로고침
+            </el-button>
 
             <div class="dashboard-meta">
               <span>즐겨찾기 {{ favoriteCount }}개</span>
@@ -869,19 +878,22 @@ dashboard-wrapper
             </div>
           </div>
 
-          <p
+          <div
             v-if="isLoading"
             class="loading-message"
           >
+            <el-skeleton animated :rows="2" />
             Axios로 모든 지역의 실시간 날씨를 불러오는 중입니다...
-          </p>
+          </div>
 
-          <p
+          <el-alert
             v-if="errorMessage"
             class="api-message"
-          >
-            {{ errorMessage }}
-          </p>
+            :title="errorMessage"
+            type="error"
+            :closable="false"
+            show-icon
+          />
 
           <div
             v-if="!isLoading && filteredWeatherList.length > 0"
@@ -901,12 +913,11 @@ dashboard-wrapper
             />
           </div>
 
-          <p
+          <el-empty
             v-else-if="!isLoading && !errorMessage"
             class="empty-message"
-          >
-            '{{ searchQuery }}'와 일치하는 도시가 없습니다.
-          </p>
+            :description="`'${searchQuery}'와 일치하는 도시가 없습니다.`"
+          />
 
         </section>
 
@@ -948,7 +959,7 @@ dashboard-wrapper
 <style scoped>
 .dashboard-wrapper {
   width: 100%;
-  max-width: 1280px;
+  max-width: 1560px;
   margin: 0 auto;
 }
 
@@ -959,7 +970,9 @@ dashboard-wrapper
 }
 
 .weather-search-bar {
-  margin-top: 20px;
+  margin-top: 12px;
+  padding: 0;
+  background: transparent;
 }
 
 .location-actions {
@@ -995,7 +1008,7 @@ dashboard-wrapper
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
   align-items: start;
-  gap: 24px;
+  gap: 16px;
 }
 
 .weather-overview {
@@ -1006,9 +1019,9 @@ dashboard-wrapper
   display: grid;
   grid-template-columns: auto auto 1fr;
   align-items: end;
-  gap: 12px;
-  margin-bottom: 18px;
-  padding-top: 18px;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-top: 12px;
   border-top: 1px solid #e2e8f0;
 }
 
@@ -1094,7 +1107,7 @@ dashboard-wrapper
 
 .empty-message {
   margin: 0;
-  padding: 24px;
+  padding: 12px;
   border: 1px dashed #94a3b8;
   border-radius: 12px;
   background: #f8fafc;
@@ -1105,7 +1118,7 @@ dashboard-wrapper
 .loading-message,
 .api-message {
   margin: 0 0 16px;
-  padding: 12px 14px;
+  padding: 10px 12px;
   border-radius: 10px;
   background: #eff6ff;
   color: #1e40af;
@@ -1120,9 +1133,9 @@ dashboard-wrapper
 .status-bar {
   display: grid;
   gap: 8px;
-  min-height: 24px;
-  margin-top: 24px;
-  padding: 18px 20px;
+  min-height: auto;
+  margin-top: 16px;
+  padding: 10px 14px;
   border: 1px solid #bbf7d0;
   border-radius: 12px;
   background: #f0fdf4;
@@ -1141,7 +1154,7 @@ dashboard-wrapper
   color: #64748b;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .dashboard-columns {
     grid-template-columns: 1fr;
   }
@@ -1179,7 +1192,7 @@ dashboard-wrapper
 }
 
 .dashboard-wrapper {
-  max-width: 1440px;
+  max-width: 1560px;
 }
 
 .weather-toolbar {
@@ -1229,9 +1242,9 @@ dashboard-wrapper
 .dashboard-wrapper {
   position: relative;
   isolation: isolate;
-  min-height: calc(100vh - 96px);
-  padding: 14px 10px 42px;
-  border-radius: 32px;
+  min-height: auto;
+  padding: 8px 0 24px;
+  border-radius: 24px;
   transition: background 0.7s ease;
 }
 

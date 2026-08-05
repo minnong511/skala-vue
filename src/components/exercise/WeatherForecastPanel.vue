@@ -164,29 +164,33 @@ watch(
     </div>
 
     <!-- isLoading이 true면 로딩 문구를 표시-->
-    <p
+    <div
       v-if="props.isLoading"
       class="forecast-message loading"
     >
+      <el-skeleton animated :rows="2" />
       Axios로 5일 예보를 불러오는 중입니다...
-    </p>
+    </div>
 
     <!-- isLoading이 true면 로딩 문구를 표시 -->
-    <p
+    <el-alert
       v-else-if="props.errorMessage"
       class="forecast-message error"
-    >
-      {{ props.errorMessage }}
-    </p>
+      :title="props.errorMessage"
+      type="error"
+      :closable="false"
+      show-icon
+    />
 
     <div
       v-else-if="displayForecasts.length > 0"
       class="forecast-grid"
     >
-      <article
+      <el-card
         v-for="forecast in displayForecasts"
         :key="forecast.id"
         class="forecast-card"
+        shadow="never"
       >
         <p class="forecast-date">{{ forecast.dateLabel }}</p>
         <p class="forecast-status">{{ forecast.status }}</p>
@@ -197,15 +201,14 @@ watch(
           <span>최저</span>
         </div>
         <p class="forecast-humidity">평균 습도 {{ forecast.humidity }}%</p>
-      </article>
+      </el-card>
     </div>
 
-    <p
+    <el-empty
       v-else
       class="forecast-message empty"
-    >
-      표시할 5일 예보가 없습니다.
-    </p>
+      description="표시할 5일 예보가 없습니다."
+    />
 
   </section>
 
@@ -256,10 +259,14 @@ h2 {
 
 .forecast-card {
   min-width: 0;
-  padding: 16px 14px;
+  padding: 0;
   border: 1px solid #dbeafe;
   border-radius: 12px;
   background: #f8fbff;
+}
+
+.forecast-card :deep(.el-card__body) {
+  padding: 16px 14px;
 }
 
 .forecast-date,

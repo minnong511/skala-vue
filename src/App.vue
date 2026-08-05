@@ -48,6 +48,12 @@ const configStore = useConfigStore()
 <!-- CSS는 Scoped로 여기서 바꾸는 것임. 근데 나 어차피 디자인 안할 거니까 일단은 생략. -->
 
 <style scoped>
+.app-shell {
+  width: 100%;
+  min-height: 100%;
+  background: #f5f5f7;
+}
+
 .app-header {
   position: sticky;
   top: 0;
@@ -62,10 +68,12 @@ const configStore = useConfigStore()
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1400px;
+  width: 100%;
+  max-width: 1560px;
+  min-height: 64px;
   margin: 0 auto;
-  padding: 16px 24px;
-  gap: 24px;
+  padding: 10px 20px;
+  gap: 16px;
 }
 
 .header-controls {
@@ -78,7 +86,7 @@ const configStore = useConfigStore()
 .navigation-bar {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 8px;
 }
 
 .brand-link,
@@ -91,7 +99,7 @@ const configStore = useConfigStore()
 
 .brand-link {
   color: #1d4ed8;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
 }
 
@@ -102,16 +110,18 @@ const configStore = useConfigStore()
 }
 
 .app-main {
-  max-width: 1400px;
+  width: 100%;
+  max-width: 1560px;
+  min-height: auto;
   margin: 0 auto;
-  padding: 24px;
+  padding: 16px 20px 28px;
 }
 
 @media (max-width: 640px) {
   .app-header-inner {
     align-items: flex-start;
     flex-direction: column;
-    padding: 16px;
+    padding: 10px 16px;
   }
 
   .header-controls {
@@ -124,7 +134,7 @@ const configStore = useConfigStore()
   }
 
   .app-main {
-    padding: 16px;
+    padding: 12px 16px 20px;
   }
 }
 
@@ -136,15 +146,16 @@ const configStore = useConfigStore()
 }
 
 .app-header-inner {
-  max-width: 1480px;
+  max-width: 1560px;
 }
 
 .navigation-bar {
-  gap: 10px;
+  gap: 6px;
 }
 
 .brand-link,
 .navigation-link {
+  font-size: 0.9rem;
   border: 1px solid transparent;
   border-radius: 999px;
   transition:

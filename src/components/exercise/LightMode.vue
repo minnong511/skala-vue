@@ -15,14 +15,14 @@ const toggleTheme = () => {
 
 <template>
   <div class="light-mode-control">
-    <button
-      type="button"
+    <el-button
+      round
       class="theme-toggle-button"
       :aria-label="configStore.isDarkMode ? '라이트 모드로 전환' : '다크 모드로 전환'"
       @click="toggleTheme"
     >
       {{ configStore.isDarkMode ? '☀️ 라이트' : '🌙 다크' }}
-    </button>
+    </el-button>
   </div>
 </template>
 

@@ -157,27 +157,33 @@ onBeforeUnmount(() => {
     >
       <label for="location-search">주소 검색</label>
       <div class="search-row">
-        <input
+        <el-input
           id="location-search"
           v-model="query"
           type="search"
           placeholder="예: 서울 강남구 역삼동"
+          clearable
         />
-        <button
-          type="submit"
+        <el-button
+          type="primary"
+          round
+          native-type="submit"
           :disabled="isSearching"
+          :loading="isSearching"
         >
-          {{ isSearching ? '검색 중...' : '지역 검색' }}
-        </button>
+          지역 검색
+        </el-button>
       </div>
     </form>
 
-    <p
+    <el-alert
       v-if="errorMessage"
       class="search-message"
-    >
-      {{ errorMessage }}
-    </p>
+      :title="errorMessage"
+      type="warning"
+      :closable="false"
+      show-icon
+    />
 
     <ul
       v-if="searchResults.length > 0"
@@ -189,8 +195,8 @@ onBeforeUnmount(() => {
         class="result-item"
       >
         <div class="result-content">
-          <button
-            type="button"
+          <el-button
+            text
             class="result-location-button"
             :class="{ selected: selectedSearchLocationId === location.id }"
             @click="selectSearchLocation(location)"
@@ -200,14 +206,15 @@ onBeforeUnmount(() => {
             <small>
               위도 {{ location.lat.toFixed(5) }}, 경도 {{ location.lon.toFixed(5) }}
             </small>
-          </button>
-          <button
-            type="button"
+          </el-button>
+          <el-button
+            type="primary"
+            round
             class="add-button"
             @click="addLocation(location)"
           >
             날씨 추가
-          </button>
+          </el-button>
         </div>
 
         <div
@@ -243,15 +250,15 @@ onBeforeUnmount(() => {
       </div>
 
       <div class="city-tabs">
-        <button
+        <el-button
           v-for="location in props.locations"
           :key="location.id"
-          type="button"
+          round
           :class="{ active: selectedMapLocation?.id === location.id }"
           @click="selectMapCity(location.id)"
         >
           {{ location.name }}
-        </button>
+        </el-button>
       </div>
 
       <div

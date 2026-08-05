@@ -103,16 +103,23 @@ const highestCity = computed(() => chartRows.value[0] ?? null)
     <div class="chart-controls">
       <label>
         비교 항목
-        <select v-model="metric">
-          <option value="temp">기온</option>
-          <option value="humidity">습도</option>
-          <option value="wind">풍속</option>
-        </select>
+        <el-select
+          v-model="metric"
+          aria-label="비교 항목"
+        >
+          <el-option label="기온" value="temp" />
+          <el-option label="습도" value="humidity" />
+          <el-option label="풍속" value="wind" />
+        </el-select>
       </label>
 
-      <p class="selected-count">
+      <el-tag
+        class="selected-count"
+        type="info"
+        round
+      >
         선택된 도시 {{ props.cities.length }}개
-      </p>
+      </el-tag>
     </div>
 
     <p
@@ -145,26 +152,26 @@ const highestCity = computed(() => chartRows.value[0] ?? null)
       </div>
     </div>
 
-    <p
+    <el-empty
       v-else
       class="empty-chart"
-    >
-      {{
+      :description="
         props.cities.length === 1
           ? '비교하려면 도시를 한 곳 더 선택해주세요.'
           : '비교할 도시를 2개 이상 선택해주세요.'
-      }}
-    </p>
+      "
+    />
 
   </section>
 </template>
 
 <style scoped>
 .comparison-panel {
-  height: 100%;
+  height: auto;
+  min-height: 0;
   margin-top: 0;
   box-sizing: border-box;
-  padding: 24px;
+  padding: 20px;
   border: 1px solid #dbe4f0;
   border-radius: 16px;
   background: #ffffff;
@@ -295,11 +302,20 @@ h2 {
 
 .empty-chart {
   margin: 0;
-  padding: 20px;
+  min-height: 0;
+  padding: 0;
   border: 1px dashed #94a3b8;
   border-radius: 10px;
   color: #64748b;
   text-align: center;
+}
+
+.empty-chart :deep(.el-empty__image) {
+  width: 72px;
+}
+
+.empty-chart :deep(.el-empty__description) {
+  margin-top: 6px;
 }
 
 @media (max-width: 640px) {

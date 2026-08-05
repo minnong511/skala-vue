@@ -80,33 +80,36 @@ const removeLocation = () => {
 </script>
 
 <template>
-  <article
+  <el-card
     class="weather-card"
+    shadow="hover"
     :class="{
       selected: props.isSelected,
       'has-remove-button': props.isCustomLocation,
     }"
     @click="selectCard"
   >
-    <button
+    <el-button
       v-if="props.isCustomLocation"
       type="button"
       class="remove-button"
       aria-label="추가 지역 삭제"
+      circle
       @click.stop="removeLocation"
     >
       ×
-    </button>
+    </el-button>
 
-    <button
-      type="button"
+    <el-button
+      text
+      circle
       class="favorite-button"
       :class="{ active: props.isFavorite }"
       :aria-label="`${props.cityItem.name} 즐겨찾기 ${props.isFavorite ? '해제' : '추가'}`"
       @click.stop="toggleFavorite"
     >
       {{ props.isFavorite ? '★' : '☆' }}
-    </button>
+    </el-button>
 
     <div class="card-heading">
       <h3>{{ props.cityItem.name }}</h3>
@@ -127,29 +130,32 @@ const removeLocation = () => {
         {{ displayTemp }}{{ configStore.unitSymbol }}
       </p>
 
-      <span
+      <el-tag
         v-if="props.cityItem.temp >= 25"
         class="badge hot"
+        round
       >
         🔥 더움
-      </span>
-      <span
+      </el-tag>
+      <el-tag
         v-else
         class="badge cool"
+        round
       >
         ❄️ 선선함
-      </span>
+      </el-tag>
     </div>
 
-    <button
-      type="button"
+    <el-button
+      type="primary"
+      round
       class="btn-detail"
       @click.stop="showDetail"
     >
       상세보기
-    </button>
+    </el-button>
 
-  </article>
+  </el-card>
 </template>
 
 <style scoped>
@@ -311,8 +317,16 @@ h3 {
 .weather-card {
   overflow: hidden;
   border-radius: 20px;
+  padding: 0;
   background: var(--glass-surface);
   box-shadow: 0 16px 36px rgb(30 64 175 / 12%);
+}
+
+.weather-card :deep(.el-card__body) {
+  display: flex;
+  min-height: 260px;
+  flex-direction: column;
+  padding: 20px;
 }
 
 .weather-card::before {

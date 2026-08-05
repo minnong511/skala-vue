@@ -19,13 +19,14 @@ const toggleUnit = () => {
       현재 단위:
       <strong>{{ configStore.unitSymbol }}</strong>
     </span>
-    <button
-      type="button"
+    <el-button
+      type="primary"
+      round
       class="toggle-btn"
       @click="toggleUnit"
     >
       {{ configStore.unit === 'celsius' ? '화씨로 보기' : '섭씨로 보기' }}
-    </button>
+    </el-button>
   </div>
 </template>
 

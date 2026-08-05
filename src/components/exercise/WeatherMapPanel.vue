@@ -70,15 +70,15 @@ const selectCity = (cityId) => {
     </div>
 
     <div class="city-tabs">
-      <button
+      <el-button
         v-for="location in props.locations"
         :key="location.id"
-        type="button"
+        round
         :class="{ active: activeCityId === location.id }"
         @click="selectCity(location.id)"
       >
         {{ location.name }}
-      </button>
+      </el-button>
     </div>
 
     <div
