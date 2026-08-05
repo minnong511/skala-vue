@@ -113,13 +113,6 @@ const highestCity = computed(() => chartRows.value[0] ?? null)
         </el-select>
       </label>
 
-      <el-tag
-        class="selected-count"
-        type="info"
-        round
-      >
-        선택된 도시 {{ props.cities.length }}개
-      </el-tag>
     </div>
 
     <p
@@ -214,18 +207,12 @@ h2 {
   margin-bottom: 18px;
 }
 
-.chart-controls label,
-.selected-count {
+.chart-controls label {
   display: grid;
   gap: 6px;
   color: #475569;
   font-size: 0.85rem;
   font-weight: 700;
-}
-
-.selected-count {
-  margin: 0;
-  align-self: center;
 }
 
 .chart-controls select {
